@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb7846186bf04fe19255916119887a83" Name="Diagram1">
+        <EntityTypeShape EntityType="MyStoreModel.Category" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Customer" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Department" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Employee" Width="1.5" PointX="8" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Order" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Product" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Shipper" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.StockStatu" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.Supplier" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyStoreModel.OrderDetail" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="MyStoreModel.FK_Products_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="MyStoreModel.FK_Orders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="MyStoreModel.FK_Employees_Departments" ManuallyRouted="false" />
+        <AssociationConnector Association="MyStoreModel.FK_Employees_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="MyStoreModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="MyStoreModel.FK_OrderDetails_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="MyStoreModel.FK_Products_Shippers" ManuallyRouted="false" />
+        <AssociationConnector Association="MyStoreModel.FK_Products_StockStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="MyStoreModel.FK_Products_Suppliers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
