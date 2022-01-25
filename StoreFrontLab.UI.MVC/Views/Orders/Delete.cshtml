@@ -1,0 +1,72 @@
+﻿@model DATA.EF.Order
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShippedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackingNbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrackingNbr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShipperID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShipperID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalShipping)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalShipping)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

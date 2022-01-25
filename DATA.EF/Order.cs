@@ -21,14 +21,12 @@ namespace DATA.EF
         }
     
         public int OrderID { get; set; }
-        public string CustomerID { get; set; }
+        public int CustomerID { get; set; }
         public Nullable<System.DateTime> ShippedDate { get; set; }
         public string TrackingNbr { get; set; }
         public Nullable<int> ShipperID { get; set; }
-        public int PaymentID { get; set; }
+        public Nullable<decimal> TotalShipping { get; set; }
         public Nullable<decimal> TotalAmt { get; set; }
-        public Nullable<System.DateTime> AddedTS { get; set; }
-        public System.DateTime UpdateTS { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -25,22 +25,20 @@ namespace DATA.EF
         public string ProductImage { get; set; }
         public string Description { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
-        public Nullable<decimal> TotalUnitsSold { get; set; }
+        public Nullable<short> TotalUnitsSold { get; set; }
         public Nullable<decimal> TotalSales { get; set; }
         public Nullable<int> StockStatusID { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> SupplierID { get; set; }
-        public int ShipperID { get; set; }
-        public Nullable<short> UnitsInStock { get; set; }
-        public Nullable<short> UnitsOnOrder { get; set; }
-        public System.DateTime AddedTS { get; set; }
-        public Nullable<System.DateTime> UpdateTS { get; set; }
+        public Nullable<int> ShipperID { get; set; }
+        public short UnitsInStock { get; set; }
+        public short UnitsOnOrder { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual Shipper Shipper { get; set; }
-        public virtual StockStatu StockStatu { get; set; }
+        public virtual StockStatus StockStatus { get; set; }
         public virtual Supplier Supplier { get; set; }
     }
 }

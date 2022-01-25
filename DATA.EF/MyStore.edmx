@@ -10,15 +10,13 @@
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Description" Type="nchar" MaxLength="10" />
-          <Property Name="AddedTS" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTS" Type="datetime" />
+          <Property Name="Description" Type="nchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="LastName" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Address1" Type="nvarchar" MaxLength="30" />
@@ -28,8 +26,6 @@
           <Property Name="PostalCode" Type="nvarchar" MaxLength="15" />
           <Property Name="Country" Type="nvarchar" MaxLength="15" />
           <Property Name="Phone" Type="nvarchar" MaxLength="24" />
-          <Property Name="AddedTS" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTS" Type="datetime" />
         </EntityType>
         <EntityType Name="Departments">
           <Key>
@@ -37,8 +33,6 @@
           </Key>
           <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
-          <Property Name="AddedTS" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTS" Type="datetime" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -59,10 +53,7 @@
           <Property Name="Country" Type="nvarchar" MaxLength="15" />
           <Property Name="Phone" Type="nvarchar" MaxLength="24" />
           <Property Name="PhoneExt" Type="nvarchar" MaxLength="4" />
-          <Property Name="Photo" Type="image" />
           <Property Name="PhotoPath" Type="nvarchar" MaxLength="255" />
-          <Property Name="AddedTS" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTS" Type="nchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -72,27 +63,24 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
             <PropertyRef Name="ProductID" />
             <PropertyRef Name="UnitPrice" />
             <PropertyRef Name="Quantity" />
-            <PropertyRef Name="Discount" />
           </Key>
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="UnitPrice" Type="money" Nullable="false" />
           <Property Name="Quantity" Type="smallint" Nullable="false" />
-          <Property Name="Discount" Type="real" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CustomerID" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="ShippedDate" Type="date" />
           <Property Name="TrackingNbr" Type="varchar" MaxLength="50" />
           <Property Name="ShipperID" Type="int" />
-          <Property Name="PaymentID" Type="int" Nullable="false" />
+          <Property Name="TotalShipping" Type="money" />
           <Property Name="TotalAmt" Type="money" />
-          <Property Name="AddedTS" Type="datetime" />
-          <Property Name="UpdateTS" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -103,16 +91,14 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           <Property Name="ProductImage" Type="nvarchar(max)" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" />
           <Property Name="UnitPrice" Type="money" />
-          <Property Name="TotalUnitsSold" Type="money" />
+          <Property Name="TotalUnitsSold" Type="smallint" />
           <Property Name="TotalSales" Type="money" />
           <Property Name="StockStatusID" Type="int" />
           <Property Name="CategoryID" Type="int" />
           <Property Name="SupplierID" Type="int" />
-          <Property Name="ShipperID" Type="int" Nullable="false" />
-          <Property Name="UnitsInStock" Type="smallint" />
-          <Property Name="UnitsOnOrder" Type="smallint" />
-          <Property Name="AddedTS" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTS" Type="datetime" />
+          <Property Name="ShipperID" Type="int" />
+          <Property Name="UnitsInStock" Type="smallint" Nullable="false" />
+          <Property Name="UnitsOnOrder" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="Shippers">
           <Key>
@@ -127,8 +113,6 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           <Property Name="Country" Type="nvarchar" MaxLength="15" />
           <Property Name="Phone" Type="nvarchar" MaxLength="24" />
           <Property Name="Fax" Type="nvarchar" MaxLength="24" />
-          <Property Name="AddedTS" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTS" Type="datetime" />
         </EntityType>
         <EntityType Name="StockStatus">
           <Key>
@@ -136,8 +120,6 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           </Key>
           <Property Name="StockStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="AddedTS" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTS" Type="datetime" />
         </EntityType>
         <EntityType Name="Suppliers">
           <Key>
@@ -152,8 +134,18 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           <Property Name="Country" Type="nvarchar" MaxLength="15" />
           <Property Name="Phone" Type="nvarchar" MaxLength="24" />
           <Property Name="Fax" Type="nvarchar" MaxLength="24" />
-          <Property Name="AddedTS" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTS" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserRegistry">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nchar" MaxLength="70" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="70" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="6" />
         </EntityType>
         <Association Name="FK_Employees_Departments">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
@@ -228,7 +220,7 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Products_Shippers">
-          <End Role="Shippers" Type="Self.Shippers" Multiplicity="1" />
+          <End Role="Shippers" Type="Self.Shippers" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shippers">
@@ -273,6 +265,7 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           <EntitySet Name="Shippers" EntityType="Self.Shippers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockStatus" EntityType="Self.StockStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRegistry" EntityType="Self.UserRegistry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [OrderDetails].[OrderID] AS [OrderID], 
@@ -329,16 +322,14 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="AddedTS" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTS" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Category" FromRole="Categories" ToRole="Products" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Name="CustomerID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Address1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
@@ -348,8 +339,6 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           <Property Name="PostalCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
-          <Property Name="AddedTS" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTS" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Department">
@@ -358,8 +347,6 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           </Key>
           <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AddedTS" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTS" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Departments" FromRole="Departments" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Employee">
@@ -381,10 +368,7 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           <Property Name="Country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="PhoneExt" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="PhotoPath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="AddedTS" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Employees_Departments" FromRole="Employees" ToRole="Departments" />
           <NavigationProperty Name="Employees1" Relationship="Self.FK_Employees_Employees" FromRole="Employees" ToRole="Employees1" />
           <NavigationProperty Name="Employee1" Relationship="Self.FK_Employees_Employees" FromRole="Employees1" ToRole="Employees" />
@@ -394,14 +378,12 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="ShippedDate" Type="DateTime" Precision="0" />
           <Property Name="TrackingNbr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ShipperID" Type="Int32" />
-          <Property Name="PaymentID" Type="Int32" Nullable="false" />
+          <Property Name="TotalShipping" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="TotalAmt" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="AddedTS" Type="DateTime" Precision="3" />
-          <Property Name="UpdateTS" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
         </EntityType>
@@ -414,20 +396,18 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TotalUnitsSold" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalUnitsSold" Type="Int16" />
           <Property Name="TotalSales" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="StockStatusID" Type="Int32" />
           <Property Name="CategoryID" Type="Int32" />
           <Property Name="SupplierID" Type="Int32" />
-          <Property Name="ShipperID" Type="Int32" Nullable="false" />
-          <Property Name="UnitsInStock" Type="Int16" />
-          <Property Name="UnitsOnOrder" Type="Int16" />
-          <Property Name="AddedTS" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTS" Type="DateTime" Precision="3" />
+          <Property Name="ShipperID" Type="Int32" />
+          <Property Name="UnitsInStock" Type="Int16" Nullable="false" />
+          <Property Name="UnitsOnOrder" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Products" FromRole="Products" ToRole="OrderDetails" />
           <NavigationProperty Name="Shipper" Relationship="Self.FK_Products_Shippers" FromRole="Products" ToRole="Shippers" />
-          <NavigationProperty Name="StockStatu" Relationship="Self.FK_Products_StockStatus" FromRole="Products" ToRole="StockStatus" />
+          <NavigationProperty Name="StockStatus" Relationship="Self.FK_Products_StockStatus" FromRole="Products" ToRole="StockStatus" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK_Products_Suppliers" FromRole="Products" ToRole="Suppliers" />
         </EntityType>
         <EntityType Name="Shipper">
@@ -443,18 +423,14 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           <Property Name="Country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
-          <Property Name="AddedTS" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTS" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Shippers" FromRole="Shippers" ToRole="Products" />
         </EntityType>
-        <EntityType Name="StockStatu">
+        <EntityType Name="StockStatus">
           <Key>
             <PropertyRef Name="StockStatusID" />
           </Key>
           <Property Name="StockStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AddedTS" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTS" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_StockStatus" FromRole="StockStatus" ToRole="Products" />
         </EntityType>
         <EntityType Name="Supplier">
@@ -470,9 +446,19 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           <Property Name="Country" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
-          <Property Name="AddedTS" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTS" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Suppliers" FromRole="Suppliers" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="UserRegistry">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="70" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -480,13 +466,12 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
             <PropertyRef Name="ProductID" />
             <PropertyRef Name="UnitPrice" />
             <PropertyRef Name="Quantity" />
-            <PropertyRef Name="Discount" />
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Quantity" Type="Int16" Nullable="false" />
-          <Property Name="Discount" Type="Single" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="5" Scale="2" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
           <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_Products" FromRole="OrderDetails" ToRole="Products" />
         </EntityType>
@@ -563,7 +548,7 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Products_Shippers">
-          <End Role="Shippers" Type="Self.Shipper" Multiplicity="1" />
+          <End Role="Shippers" Type="Self.Shipper" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shippers">
@@ -575,7 +560,7 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Products_StockStatus">
-          <End Role="StockStatus" Type="Self.StockStatu" Multiplicity="0..1" />
+          <End Role="StockStatus" Type="MyStoreModel.StockStatus" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="StockStatus">
@@ -606,8 +591,9 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Shippers" EntityType="Self.Shipper" />
-          <EntitySet Name="StockStatus" EntityType="Self.StockStatu" />
+          <EntitySet Name="StockStatus1" EntityType="MyStoreModel.StockStatus" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="UserRegistries" EntityType="Self.UserRegistry" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
           <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
             <End Role="Categories" EntitySet="Categories" />
@@ -638,7 +624,7 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Products_StockStatus" Association="Self.FK_Products_StockStatus">
-            <End Role="StockStatus" EntitySet="StockStatus" />
+            <End Role="StockStatus" EntitySet="StockStatus1" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Products_Suppliers" Association="Self.FK_Products_Suppliers">
@@ -657,8 +643,6 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
               <MappingFragment StoreEntitySet="Categories">
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="AddedTS" ColumnName="AddedTS" />
-                <ScalarProperty Name="UpdateTS" ColumnName="UpdateTS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -675,8 +659,6 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
                 <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="AddedTS" ColumnName="AddedTS" />
-                <ScalarProperty Name="UpdateTS" ColumnName="UpdateTS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -685,8 +667,6 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
               <MappingFragment StoreEntitySet="Departments">
                 <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
                 <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
-                <ScalarProperty Name="AddedTS" ColumnName="AddedTS" />
-                <ScalarProperty Name="UpdateTS" ColumnName="UpdateTS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -708,10 +688,7 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
                 <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="PhoneExt" ColumnName="PhoneExt" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
-                <ScalarProperty Name="AddedTS" ColumnName="AddedTS" />
-                <ScalarProperty Name="UpdateTS" ColumnName="UpdateTS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -723,10 +700,8 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
                 <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
                 <ScalarProperty Name="TrackingNbr" ColumnName="TrackingNbr" />
                 <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
-                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="TotalShipping" ColumnName="TotalShipping" />
                 <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
-                <ScalarProperty Name="AddedTS" ColumnName="AddedTS" />
-                <ScalarProperty Name="UpdateTS" ColumnName="UpdateTS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -746,8 +721,6 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
                 <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
                 <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
                 <ScalarProperty Name="UnitsOnOrder" ColumnName="UnitsOnOrder" />
-                <ScalarProperty Name="AddedTS" ColumnName="AddedTS" />
-                <ScalarProperty Name="UpdateTS" ColumnName="UpdateTS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -763,18 +736,14 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
                 <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="AddedTS" ColumnName="AddedTS" />
-                <ScalarProperty Name="UpdateTS" ColumnName="UpdateTS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StockStatus">
-            <EntityTypeMapping TypeName="MyStoreModel.StockStatu">
+          <EntitySetMapping Name="StockStatus1">
+            <EntityTypeMapping TypeName="MyStoreModel.StockStatus">
               <MappingFragment StoreEntitySet="StockStatus">
                 <ScalarProperty Name="StockStatusID" ColumnName="StockStatusID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="AddedTS" ColumnName="AddedTS" />
-                <ScalarProperty Name="UpdateTS" ColumnName="UpdateTS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -790,8 +759,19 @@ warning 6002: The table/view 'MyStore.dbo.OrderDetails' does not have a primary 
                 <ScalarProperty Name="Country" ColumnName="Country" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="AddedTS" ColumnName="AddedTS" />
-                <ScalarProperty Name="UpdateTS" ColumnName="UpdateTS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRegistries">
+            <EntityTypeMapping TypeName="MyStoreModel.UserRegistry">
+              <MappingFragment StoreEntitySet="UserRegistry">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

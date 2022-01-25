@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -45,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -165,15 +166,27 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderDetailsController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\ShippersController.cs" />
+    <Compile Include="Controllers\StockStatusController.cs" />
+    <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Controllers\UserRegistriesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -195,6 +208,9 @@
     <Content Include="Content\assets\img\banner_img_01.jpg" />
     <Content Include="Content\assets\img\banner_img_02.jpg" />
     <Content Include="Content\assets\img\banner_img_03.jpg" />
+    <Content Include="Content\assets\img\blue bowl.png" />
+    <Content Include="Content\assets\img\blue doodle harness_ccexpress.png" />
+    <Content Include="Content\assets\img\Bolster Bed_ccexpress.png" />
     <Content Include="Content\assets\img\brand_01.png" />
     <Content Include="Content\assets\img\brand_02.png" />
     <Content Include="Content\assets\img\brand_03.png" />
@@ -202,10 +218,12 @@
     <Content Include="Content\assets\img\category_img_01.jpg" />
     <Content Include="Content\assets\img\category_img_02.jpg" />
     <Content Include="Content\assets\img\category_img_03.jpg" />
+    <Content Include="Content\assets\img\city doodle bowl.jpg" />
     <Content Include="Content\assets\img\favicon.ico" />
     <Content Include="Content\assets\img\feature_prod_01.jpg" />
     <Content Include="Content\assets\img\feature_prod_02.jpg" />
     <Content Include="Content\assets\img\feature_prod_03.jpg" />
+    <Content Include="Content\assets\img\joey doesn%27t shar_ccexpress.png" />
     <Content Include="Content\assets\img\product_single_01.jpg" />
     <Content Include="Content\assets\img\product_single_02.jpg" />
     <Content Include="Content\assets\img\product_single_03.jpg" />
@@ -216,6 +234,7 @@
     <Content Include="Content\assets\img\product_single_08.jpg" />
     <Content Include="Content\assets\img\product_single_09.jpg" />
     <Content Include="Content\assets\img\product_single_10.jpg" />
+    <Content Include="Content\assets\img\Purple frame plush_ccexpress.png" />
     <Content Include="Content\assets\img\shop_01.jpg" />
     <Content Include="Content\assets\img\shop_02.jpg" />
     <Content Include="Content\assets\img\shop_03.jpg" />
@@ -227,6 +246,7 @@
     <Content Include="Content\assets\img\shop_09.jpg" />
     <Content Include="Content\assets\img\shop_10.jpg" />
     <Content Include="Content\assets\img\shop_11.jpg" />
+    <Content Include="Content\assets\img\you%27re my lobster shirt.jpg" />
     <Content Include="Content\assets\js\bootstrap.bundle.min.js" />
     <Content Include="Content\assets\js\custom.js" />
     <Content Include="Content\assets\js\jquery-1.11.0.min.js" />
@@ -322,6 +342,7 @@
     <Content Include="Content\assets\webfonts\slick.eot" />
     <Content Include="Content\assets\webfonts\slick.ttf" />
     <Content Include="Content\assets\webfonts\slick.woff" />
+    <Content Include="configs\AppSecretKeys.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -396,6 +417,62 @@
     <Content Include="_Archive2\assets\webfonts\slick.ttf" />
     <Content Include="_Archive2\assets\webfonts\slick.woff" />
     <Content Include="Views\Shared\OriginalLayout.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Departments\Create.cshtml" />
+    <Content Include="Views\Departments\Delete.cshtml" />
+    <Content Include="Views\Departments\Details.cshtml" />
+    <Content Include="Views\Departments\Edit.cshtml" />
+    <Content Include="Views\Departments\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Suppliers\Create.cshtml" />
+    <Content Include="Views\Suppliers\Delete.cshtml" />
+    <Content Include="Views\Suppliers\Details.cshtml" />
+    <Content Include="Views\Suppliers\Edit.cshtml" />
+    <Content Include="Views\Suppliers\Index.cshtml" />
+    <Content Include="Views\Shippers\Create.cshtml" />
+    <Content Include="Views\Shippers\Delete.cshtml" />
+    <Content Include="Views\Shippers\Details.cshtml" />
+    <Content Include="Views\Shippers\Edit.cshtml" />
+    <Content Include="Views\Shippers\Index.cshtml" />
+    <Content Include="Views\UserRegistries\Create.cshtml" />
+    <Content Include="Views\UserRegistries\Delete.cshtml" />
+    <Content Include="Views\UserRegistries\Details.cshtml" />
+    <Content Include="Views\UserRegistries\Edit.cshtml" />
+    <Content Include="Views\UserRegistries\Index.cshtml" />
+    <Content Include="Views\StockStatus\Create.cshtml" />
+    <Content Include="Views\StockStatus\Delete.cshtml" />
+    <Content Include="Views\StockStatus\Details.cshtml" />
+    <Content Include="Views\StockStatus\Edit.cshtml" />
+    <Content Include="Views\StockStatus\Index.cshtml" />
+    <Content Include="Views\Home\EmailConfirmation.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\OrderDetails\Create.cshtml" />
+    <Content Include="Views\OrderDetails\Delete.cshtml" />
+    <Content Include="Views\OrderDetails\Details.cshtml" />
+    <Content Include="Views\OrderDetails\Edit.cshtml" />
+    <Content Include="Views\OrderDetails\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -408,6 +485,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DATA.EF\StoreFront.DATA.EF.csproj">
+      <Project>{358158c9-8df1-45b7-acb6-4823391d58ee}</Project>
+      <Name>StoreFront.DATA.EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -443,7 +526,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

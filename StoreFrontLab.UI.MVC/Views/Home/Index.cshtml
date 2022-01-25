@@ -14,14 +14,15 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="~/content/assets/img/banner_img_01.jpg" alt="">
+                        @* <img class="img-fluid" src="~/content/assets/img/banner_img_01.jpg" alt="">*@
+                        <img class="img-fluid" src="~/Content/assets/img/blue bowl.png" alt=""/>
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left align-self-center">
-                            <h1 class="h1 text-success"><b>zay</b> ecommerce</h1>
-                            <h3 class="h2">tiny and perfect ecommerce template</h3>
+                            <h1 class="h1 text-success"><b>Paw Friends Boutique</b></h1>
+                            <h3 class="h2">Helping you be there for your furry friends!</h3>
                             <p>
-                                Friends For Paws Boutique is an ecommerce html5 css template with latest version of bootstrap 5 (beta 1).
+                                Paw Friends Boutique is an ecommerce html5 css template with latest version of bootstrap 5 (beta 1).
                                 this template is 100% free provided by <a rel="sponsored" class="text-success" href="https://templatemo.com" target="_blank">templatemo</a> website.
                                 image credits go to <a rel="sponsored" class="text-success" href="https://stories.freepik.com/" target="_blank">freepik stories</a>,
                                 <a rel="sponsored" class="text-success" href="https://unsplash.com/" target="_blank">unsplash</a> and
@@ -36,7 +37,8 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="~/content/assets/img/banner_img_02.jpg" alt="">
+                        <img class="img-fluid" src="~/Content/assets/img/Bolster Bed_ccexpress.png" alt="">
+                        @*<img class="img-fluid" src="~/content/assets/img/banner_img_02.jpg" alt="">*@
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -55,7 +57,8 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="~/content/assets/img/banner_img_03.jpg" alt="">
+                        <img class="img-fluid"
+                        src="~/Content/assets/img/you're my lobster shirt.jpg" alt=""/>
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -79,11 +82,11 @@
     </a>
 </div>
 <!-- end banner hero -->
-<!-- start categories of the month -->
+<!-- start product categories -->
 <section class="container py-5">
     <div class="row text-center pt-3">
         <div class="col-lg-6 m-auto">
-            <h1 class="h1">categories of the month</h1>
+            <h1 class="h1">Product Offerings</h1>
             <p>
                 excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
                 deserunt mollit anim id est laborum.
@@ -91,110 +94,147 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="~/content/assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
-            <h5 class="text-center mt-3 mb-3">watches</h5>
-            <p class="text-center"><a class="btn btn-success">go shop</a></p>
+        <div class="col-12 col-md-4 p-5 mt-3 catContainer">
+            <a href="#"><img src="~/content/assets/img/category_img_01.jpg" class="rounded-circle img-fluid border catImage"></a>
+            <div class="catMiddle">
+                <div class="catText">All Categories</div>
+            </div>
+            @*<p class="text-center"><a class="btn btn-success">View</a></p>*@
         </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="~/content/assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">shoes</h2>
-            <p class="text-center"><a class="btn btn-success">go shop</a></p>
+        <div class="col-12 col-md-4 p-5 mt-3 catContainer">
+            <a href="#">
+                <img src="~/Content/assets/img/Bolster Bed_ccexpress.png" class="rounded-circle img-fluid border catImage">
+            </a>
+            </a>
+            <div class="catMiddle">
+                <div class="catText">Beds</div>
+            </div>
+            @*d            <p class="text-center"><a class="btn btn-success">View</a></p>*@
         </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="~/content/assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">accessories</h2>
-            <p class="text-center"><a class="btn btn-success">go shop</a></p>
+
+        <div class="col-12 col-md-4 p-5 mt-3 catContainer">
+            <a href="#">
+                <img src="~/Content/assets/img/blue doodle harness_ccexpress.png" class="rounded-circle img-fluid border catImage">
+            </a>
+            </a>
+            <div class="catMiddle">
+                <div class="catText">Leashes and Collars</div>
+            </div>
+            @*<p class="text-center"><a class="btn btn-success">View</a></p>*@
         </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-4 p-5 mt-3 catContainer">
+            <a href="#"><img src="~/content/assets/img/category_img_03.jpg" class="rounded-circle img-fluid border catImage"></a>
+            <div class="catMiddle">
+                <div class="catText">Apparel & Accessories</div>
+            </div>
+            @*<p class="text-center"><a class="btn btn-success">View</a></p>*@
+        </div>
+        <div class="col-12 col-md-4 p-5 mt-3 catContainer">
+            <a href="#"><img src="~/content/assets/img/category_img_03.jpg" class="rounded-circle img-fluid border catImage"></a>
+            <div class="catMiddle">
+                <div class="catText">Dinnertime</div>
+            </div>
+            @*<p class="text-center"><a class="btn btn-success">View</a></p>*@
+        </div>
+        <div class="col-12 col-md-4 p-5 mt-3 catContainer">
+            <a href="#"><img src="~/content/assets/img/category_img_03.jpg" class="rounded-circle img-fluid border catImage"></a>
+            <div class="catMiddle">
+                <div class="catText">Playtime</div>
+            </div>
+            @*<p class="text-center"><a class="btn btn-success">View</a></p>*@
+        </div>
+
     </div>
 </section>
 <!-- end categories of the month -->
 <!-- start featured product -->
-<section class="bg-light">
-    <div class="container py-5">
-        <div class="row text-center py-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">featured product</h1>
-                <p>
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    excepteur sint occaecat cupidatat non proident.
-                </p>
+@*<section class="bg-light">
+        <div class="container py-5">
+            <div class="row text-center py-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 class="h1">featured product</h1>
+                    <p>
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        excepteur sint occaecat cupidatat non proident.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="@Url.Action("ShopSingle", "Home")"shop-single.html">
+                            <img src="~/content/assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">$240.00</li>
+                            </ul>
+                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">gym weight</a>
+                            <p class="card-text">
+                                lorem ipsum dolor sit amet, consectetur adipisicing elit. sunt in culpa qui officia deserunt.
+                            </p>
+                            <p class="text-muted">reviews (24)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="shop-single.html">
+                            <img src="~/content/assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">$480.00</li>
+                            </ul>
+                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">cloud nike shoes</a>
+                            <p class="card-text">
+                                aenean gravida dignissim finibus. nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
+                            </p>
+                            <p class="text-muted">reviews (48)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="shop-single.html">
+                            <img src="~/content/assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">$360.00</li>
+                            </ul>
+                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">summer addides shoes</a>
+                            <p class="card-text">
+                                curabitur ac mi sit amet diam luctus porta. phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
+                            </p>
+                            <p class="text-muted">reviews (74)</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="@Url.Action("ShopSingle", "Home")"shop-single.html">
-                        <img src="~/content/assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
-                            <li class="text-muted text-right">$240.00</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">gym weight</a>
-                        <p class="card-text">
-                            lorem ipsum dolor sit amet, consectetur adipisicing elit. sunt in culpa qui officia deserunt.
-                        </p>
-                        <p class="text-muted">reviews (24)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="~/content/assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                                <i class="text-muted fa fa-star"></i>
-                            </li>
-                            <li class="text-muted text-right">$480.00</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">cloud nike shoes</a>
-                        <p class="card-text">
-                            aenean gravida dignissim finibus. nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
-                        </p>
-                        <p class="text-muted">reviews (48)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="~/content/assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                                <i class="text-warning fa fa-star"></i>
-                            </li>
-                            <li class="text-muted text-right">$360.00</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">summer addides shoes</a>
-                        <p class="card-text">
-                            curabitur ac mi sit amet diam luctus porta. phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
-                        </p>
-                        <p class="text-muted">reviews (74)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>*@
 <!-- End Featured Product -->

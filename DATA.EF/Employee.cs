@@ -35,10 +35,7 @@ namespace DATA.EF
         public string Country { get; set; }
         public string Phone { get; set; }
         public string PhoneExt { get; set; }
-        public byte[] Photo { get; set; }
         public string PhotoPath { get; set; }
-        public System.DateTime AddedTS { get; set; }
-        public string UpdateTS { get; set; }
     
         public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

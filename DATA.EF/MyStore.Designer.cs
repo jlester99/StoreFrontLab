@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Student\Documents\Visual Studio 2017\Projects\211108\07_MVC2\StoreFrontLab\DATA.EF\MyStoreModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Student\Documents\Visual Studio 2017\Projects\211108\07_MVC2\StoreFrontLab\DATA.EF\MyStore.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

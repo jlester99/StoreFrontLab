@@ -29,8 +29,6 @@ namespace DATA.EF
         public string Country { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
-        public System.DateTime AddedTS { get; set; }
-        public Nullable<System.DateTime> UpdateTS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

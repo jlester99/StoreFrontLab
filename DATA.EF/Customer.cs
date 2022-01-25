@@ -20,7 +20,7 @@ namespace DATA.EF
             this.Orders = new HashSet<Order>();
         }
     
-        public string CustomerID { get; set; }
+        public int CustomerID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address1 { get; set; }
@@ -30,8 +30,6 @@ namespace DATA.EF
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string Phone { get; set; }
-        public System.DateTime AddedTS { get; set; }
-        public Nullable<System.DateTime> UpdateTS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

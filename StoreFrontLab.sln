@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreFrontLab.UI.MVC", "StoreFrontLab.UI.MVC\StoreFrontLab.UI.MVC.csproj", "{F6964B53-5E8D-4663-B05E-715059111915}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DATA.EF", "DATA.EF\DATA.EF.csproj", "{358158C9-8DF1-45B7-ACB6-4823391D58EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreFront.DATA.EF", "DATA.EF\StoreFront.DATA.EF.csproj", "{358158C9-8DF1-45B7-ACB6-4823391D58EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

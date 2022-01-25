@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DATA.EF.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrackingNbr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipperID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalShipping)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShippedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrackingNbr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShipperID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalShipping)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
+        </td>
+    </tr>
+}
+
+</table>

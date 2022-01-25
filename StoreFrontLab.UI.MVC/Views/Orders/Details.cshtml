@@ -1,0 +1,66 @@
+﻿@model DATA.EF.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShippedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackingNbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrackingNbr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShipperID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShipperID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalShipping)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalShipping)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -51,80 +51,91 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs">
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Customer.cs">
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Department.cs">
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="MyStoreModel.Context.cs">
+    <Compile Include="Metadata\CategoryMetadata.cs" />
+    <Compile Include="Metadata\CustomerMetadata.cs" />
+    <Compile Include="Metadata\DepartmentMetadata.cs" />
+    <Compile Include="Metadata\EmployeeMetadata.cs" />
+    <Compile Include="Metadata\OrderDetailsMetadata.cs" />
+    <Compile Include="Metadata\OrderMetadata.cs" />
+    <Compile Include="Metadata\ProductMetadata.cs" />
+    <Compile Include="Metadata\ShipperMetadata.cs" />
+    <Compile Include="Metadata\StockStatusMetadata.cs" />
+    <Compile Include="Metadata\SupplierMetadata.cs" />
+    <Compile Include="Metadata\UserRegistryMetadata.cs" />
+    <Compile Include="MyStore.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MyStoreModel.Context.tt</DependentUpon>
+      <DependentUpon>MyStore.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MyStoreModel.cs">
+    <Compile Include="MyStore.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="MyStoreModel.Designer.cs">
+    <Compile Include="MyStore.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MyStoreModel.edmx</DependentUpon>
+      <DependentUpon>MyStore.edmx</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
     <Compile Include="OrderDetail.cs">
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shipper.cs">
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="StockStatu.cs">
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+    <Compile Include="StockStatus.cs">
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
     <Compile Include="Supplier.cs">
-      <DependentUpon>MyStoreModel.tt</DependentUpon>
+      <DependentUpon>MyStore.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="MyStoreModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MyStoreModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Compile Include="UserRegistry.cs">
+      <DependentUpon>MyStore.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="MyStoreModel.edmx.diagram">
-      <DependentUpon>MyStoreModel.edmx</DependentUpon>
+    <EntityDeploy Include="MyStore.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MyStore.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MyStore.edmx.diagram">
+      <DependentUpon>MyStore.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MyStoreModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MyStoreModel.Context.cs</LastGenOutput>
-      <DependentUpon>MyStoreModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="MyStoreModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyStoreModel.edmx</DependentUpon>
-      <LastGenOutput>MyStoreModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="MyStore.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyStore.edmx</DependentUpon>
+      <LastGenOutput>MyStore.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MyStore.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MyStore.edmx</DependentUpon>
+      <LastGenOutput>MyStore.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
