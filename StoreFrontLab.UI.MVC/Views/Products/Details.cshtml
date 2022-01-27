@@ -1,114 +1,81 @@
 ﻿@model DATA.EF.Product
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = $"{Model.ProductName}";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+<!-- Open Content -->
+<section class="bg-light">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-lg-5 mt-5">
+                <div class="card mb-3">
+                    <img class="card-img img-fluid" src="~/Content/assets/img/@Model.ProductImage" alt="Product image" title="@Model.ProductName" />
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </dt>
+            </div>
+            <!-- col end -->
+            <div class="col-lg-7 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h2"> @Html.DisplayFor(model => Model.ProductName)</h1>
+                        <p class="h3 py-2"> @Html.DisplayFor(model => Model.UnitPrice)</p>
+                        <p class="py-2">
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-warning"></i>
+                            <i class="fa fa-star text-secondary"></i>
+                            <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
+                        </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductImage)
-        </dd>
+                        <h6>Description:</h6>
+                        <p>@Html.DisplayFor(model => model.Description)</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                        <div class="row">
+                            @*<div class="col-auto pt-3">
+                                @Html.HiddenFor(x => x.ProductID)
+                                <ul class="list-inline">
+                                    <li class="list-inline-item text-right">
+                                        Quantity
+                                        <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                                    </li>
+                                    <li class="list-inline-item"><span class="btn btn-primary" id="btn-minus">-</span></li>
+                                    <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
+                                    <li class="list-inline-item"><span class="btn btn-primary" id="btn-plus">+</span></li>
+                                </ul>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
+                            @*</div>*@
+                            <div class="col-auto pt-3 px-4">
+                                <p>
+                                    @using (Html.BeginForm("AddToCart", "Products", new { @productID = Model.ProductID }, FormMethod.Post, new { @class = "text-center" }))
+                                    {
+                                        @Html.HiddenFor(x => x.ProductID)
+                                        <span class="label">Quantity: </span>
+                                        @Html.TextBox("Qty", 1, new { @class = "form-control", style = "max-width: 50px;display: inline;" })
+                                        <input type="submit" value="Add to Cart" class="btn btn-success" name="qty" />
+                                    }
+                                </p>
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 offset-md-9">
+                
+    <p class="pt-5">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalUnitsSold)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TotalUnitsSold)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalSales)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TotalSales)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitsInStock)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnitsInStock)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitsOnOrder)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnitsOnOrder)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Shipper.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Shipper.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StockStatus.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StockStatus.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Supplier.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Supplier.Name)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

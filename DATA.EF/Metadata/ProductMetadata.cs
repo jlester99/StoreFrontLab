@@ -28,7 +28,7 @@ namespace DATA.EF //.MetaData
         public string Description { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:c}")]
-        [Display(Name = "Unit Price")]
+        [Display(Name = "Price")]
         public decimal?  UnitPrice { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:c}")] //this has the wrong datatype

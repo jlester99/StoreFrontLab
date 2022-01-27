@@ -13,7 +13,7 @@ namespace DATA.EF //.MetaData
     public class CategoryMetadata
     {
         [StringLength(30, ErrorMessage = "*Category Description must be 30 characters or less.")]
-        [Display(Name = "Category Description")]
+        [Display(Name = "Category")]
         public string Description { get; set; }
 
     }

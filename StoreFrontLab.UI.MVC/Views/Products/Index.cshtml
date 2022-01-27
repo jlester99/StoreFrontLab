@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<DATA.EF.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Product Home";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -16,6 +16,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProductImage)
+
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -23,7 +24,7 @@
         <th>
             @Html.DisplayNameFor(model => model.UnitPrice)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TotalUnitsSold)
         </th>
         <th>
@@ -40,13 +41,13 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Shipper.Name)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.StockStatus.Description)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Supplier.Name)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -56,7 +57,9 @@
             @Html.DisplayFor(modelItem => item.ProductName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProductImage)
+            @* Image Upload utility step 1 *@
+            @*@Html.DisplayFor(modelItem => item.ProductImage)*@
+            <img src="~/Content/assets/img/t_@item.ProductImage" alt="Product image" title="@item.ProductName" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
@@ -64,7 +67,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.UnitPrice)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TotalUnitsSold)
         </td>
         <td>
@@ -75,19 +78,19 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UnitsOnOrder)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.Category.Description)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.Shipper.Name)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.StockStatus.Description)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Supplier.Name)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |

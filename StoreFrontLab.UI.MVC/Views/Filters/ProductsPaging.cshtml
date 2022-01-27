@@ -1,0 +1,130 @@
+﻿@* We updated the model to use paged list instead of IEnumerable. This change is necessary so that we can benefit from
+    functionality built into the PagedList collection type.*@
+@model PagedList.IPagedList<DATA.EF.Product>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@* Below is the search box functionality *@
+Search
+@using (Html.BeginForm("ProductsPaging", "Filters", FormMethod.Get))
+{
+    <p>
+        Find by Name: @Html.TextBox("SearchString", ViewBag.SearchString as string)
+        <input type="submit" value="search" />
+    </p>
+}
+
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@*
+    The code above displays the current page of X number of records (Page Count). We use the tierney operator above in the event
+    that no records are in the Page Count we wont show "Page 1 of 0"
+*@
+
+@Html.PagedListPager(Model, page => Url.Action("ProductsPaging", new { page, searchString = ViewBag.SearchString }))
+@*
+    The code above generates the individual page buttons. It uses the strongly typed collection defined on line 3 of this view.
+    For each page button, we are creating an Url.Action that goes to the BooksMVCPaging method on the Filters controller. It also passes over the next page number.
+*@
+
+
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ProductImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().TotalUnitsSold)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().TotalSales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UnitsInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UnitsOnOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Category.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Shipper.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().StockStatus.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Supplier.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductImage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalUnitsSold)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalSales)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsOnOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shipper.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockStatus.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>

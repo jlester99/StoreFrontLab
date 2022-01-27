@@ -14,7 +14,7 @@ namespace DATA.EF //.MetaData
     {
         [Required(ErrorMessage = "*Status Description must contain a value.")]
         [StringLength(20, ErrorMessage = "*Status Description must be 20 characters or less.")]
-        [Display(Name = "Status Description")]
+        [Display(Name = "Status")]
         public string Description { get; set; }
 
     }
