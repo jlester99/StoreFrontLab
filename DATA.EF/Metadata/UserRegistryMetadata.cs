@@ -22,24 +22,8 @@ namespace DATA.EF //.Metadata
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [StringLength(70, ErrorMessage = "*Address must be 70 characters or less.")]
-        [DisplayFormat(NullDisplayText = "[-N/A-]")]
-        [Display(Name = "Address")]
-        public string Address { get; set; }
-
-        [StringLength(20, ErrorMessage = "*City must be 20 characters or less.")]
-        [DisplayFormat(NullDisplayText = "[-N/A-]")]
-        [Display(Name = "City")]
-        public string City { get; set; }
-
-        [StringLength(2, ErrorMessage = "*State must be 2 characters.")]
-        [DisplayFormat(NullDisplayText = "[-N/A-]")]
-        [Display(Name = "State")]
-        public string State { get; set; }
-
-        [StringLength(6, ErrorMessage = "*Zip Code must be 6 characters or less.")]
-        [DisplayFormat(NullDisplayText = "[-N/A-]")]
-        [Display(Name = "Zip Code")]
-        public string PostalCode { get; set; }
+        [Required]
+        [Display(Name = "Email")]
+        public string EmailAddress { get; set; }
     }
 }

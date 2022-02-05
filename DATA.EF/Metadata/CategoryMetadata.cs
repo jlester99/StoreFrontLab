@@ -16,5 +16,8 @@ namespace DATA.EF //.MetaData
         [Display(Name = "Category")]
         public string Description { get; set; }
 
+        [Display(Name = "Category ID")]
+        public int CategoryID { get; set; }
+
     }
 }

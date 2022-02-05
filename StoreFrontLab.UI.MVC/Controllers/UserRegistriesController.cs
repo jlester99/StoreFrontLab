@@ -46,7 +46,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,FirstName,LastName,Address,City,State,PostalCode")] UserRegistry userRegistry)
+        public ActionResult Create([Bind(Include = "UserId,FirstName,LastName,EmailAddress")] UserRegistry userRegistry)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserId,FirstName,LastName,Address,City,State,PostalCode")] UserRegistry userRegistry)
+        public ActionResult Edit([Bind(Include = "UserId,FirstName,LastName,EmailAddress")] UserRegistry userRegistry)
         {
             if (ModelState.IsValid)
             {

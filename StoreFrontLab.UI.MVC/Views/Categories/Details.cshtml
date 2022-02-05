@@ -1,10 +1,10 @@
 ﻿@model DATA.EF.Category
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = $"{Model.Description} Details"; 
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
     <h4>Category</h4>
@@ -21,6 +21,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryID }) |
+    @Html.ActionLink("Edit", "Categories", new { id = Model.CategoryID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

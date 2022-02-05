@@ -1,102 +1,196 @@
-﻿@model IEnumerable<DATA.EF.Product>
+﻿@*@model IEnumerable<DATA.EF.Product>*@
+@model PagedList.IPagedList<DATA.EF.Product>
+
+@using PagedList.Mvc
 
 @{
-    ViewBag.Title = "Product Home";
+    ViewBag.Title = "Product Card View";
 }
 
-<h2>@ViewBag.Title</h2>
+@*<h2>@ViewBag.Title</h2>*@
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductImage)
 
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.TotalUnitsSold)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalSales)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitsInStock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitsOnOrder)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Shipper.Name)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.StockStatus.Description)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Supplier.Name)
-        </th>*@
-        <th></th>
-    </tr>
+@*@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @* Image Upload utility step 1 *@
-            @*@Html.DisplayFor(modelItem => item.ProductImage)*@
-            <img src="~/Content/assets/img/t_@item.ProductImage" alt="Product image" title="@item.ProductName" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitPrice)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.TotalUnitsSold)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalSales)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitsInStock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitsOnOrder)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Category.Description)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Shipper.Name)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.StockStatus.Description)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Supplier.Name)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
-        </td>
-    </tr>
-}
 
-</table>
+<!-- Start Content -->
+<div class="row-border panel-body panel-primary">
+    <form method="get" action="~/Products/Index" class="form-horizontal">
+        @*
+            Form methods:
+            Post - form data is sent in the body of the HttpRequest
+            - used typically when creating a record, or sending an email
+
+            Get - form data is sent in the query string in key/value pairs
+            - primarily used for searches/filters
+
+        *@
+        <div class="form-group">
+            <div class="row py-4">
+                <div class="col-md-1 offset-md-1">
+                    <a href="@Url.Action("TableViewProducts","Products")" class="btn btn-success mt-1">Table View</a>
+                </div>
+                <div class="col-md-2">
+                    @Html.DropDownList("CategoryID", null, "Select a Category", htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="col-md-2">
+                    @Html.DropDownList("StockStatusID", null, "Select a Status", htmlAttributes: new { @class = "form-control" })
+                </div>
+                    <div class="col-md-1">
+                    <input type="submit" value="Search" class="btn btn-primary mt-2" />
+                    </div>
+                <div class="col-md-2" style="line-height:2">
+                    <input type="text" name="searchFilter" placeholder="Search Products" />
+                    <br />
+                </div>
+                <div class="col-md-2">
+                    <div class="text-center">
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                        <br /> <br />
+                        <ul class="pagination pagination-md active">
+                            @for (int i = 1; i <= Model.PageCount; i++)
+
+                            {
+                                <li class="page-item-disabled">
+                                    <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" tabindex="-1"
+                                       href="@Url.Action("Index", new { page = i})">@i</a>
+                                       @*href="@Url.Action("Index", new { page = i, stockStatusId = , categoryId = , searchFiler =   })">@i</a>*@
+
+                                </li>
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-lg-3 filters">
+                <h1 class="h2 pb-4">Categories</h1>
+                <ul class="list-unstyled">
+                    <li class="pb-3">
+                        <a class="d-flex justify-content-between h3 text-decoration-none"
+                           href="@Url.Action("Index","Products",new { categoryId = "1"})">
+                            Playtime
+                        </a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="d-flex justify-content-between h3 text-decoration-none"
+                           href="@Url.Action("Index","Products",new { categoryId = "2"})">
+                            Apparel
+                        </a>
+
+                    </li>
+                    <li class="pb-3">
+                        <a class="d-flex justify-content-between h3 text-decoration-none"
+                           href="@Url.Action("Index","Products",new { categoryId = "3"})">Leashes & Collars</a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="d-flex justify-content-between h3 text-decoration-none"
+                           href="@Url.Action("Index","Products",new { categoryId = "4"})">Mealtime</a>
+                    </li>
+                    <li class="pb-3">
+                        <a class="d-flex justify-content-between h3 text-decoration-none"
+                           href="@Url.Action("Index","Products",new { categoryId = "5"})">Beds</a>
+                    </li>
+
+                    <li class="pb-3">
+                        <a class="d-flex justify-content-between h3 text-decoration-none"
+                           href="@Url.Action("Index","Products", new { categoryId = "0"})">All</a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div class="col-lg-9">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 catContainer">
+                            <div class="card mb-4 product-wap rounded-0">
+                                <div class="card rounded-0">
+
+                                    @Html.HiddenFor(modelItem => item.ProductID)
+                                    @*<a href="@Url.Action("Details", "Products", new { id = @item.ProductID })">*@
+                                    <img class="card-img catImage rounded-0 img-fluid text-decoration-none"
+                                         src="~/Content/assets/img/@item.ProductImage" alt="Product image" title="@item.ProductName" />
+                                    <div class="catMiddle">
+                                        <a class="catText" href="@Url.Action("Details", "Products", new { id=@item.ProductID})">Details</a>
+                                    </div>
+                                    @*</a>*@
+                                    <div class="text-center">
+                                        <p>
+                                            <a href="@Url.Action("Details", "Products", new { id = @item.ProductID })">
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card-body" style="min-height: 200px" ;>
+                                    <a class="text-decoration-none" href="@Url.Action("Details", "Products", new { id = @item.ProductID })">
+                                        @item.ProductName
+                                        <ul class="w-100 list-unstyled d-flex justify-content-between mb-0 text-decoration-none">
+                                            <li></li>
+                                            <li class="pt-2">
+                                                <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                                                <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                                                <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                                                <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                                                <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                                            </li>
+                                        </ul>
+                                        <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                            <li>
+                                                <i class="text-warning fa fa-star"></i>
+                                                <i class="text-warning fa fa-star"></i>
+                                                <i class="text-warning fa fa-star"></i>
+                                                <i class="text-muted fa fa-star"></i>
+                                                <i class="text-muted fa fa-star"></i>
+                                            </li>
+                                        </ul>
+                                        <p class="text-center mb-0">@string.Format($"{item.UnitPrice:c}")</p>
+                                    </a>
+
+                                    <p>
+                                        <br />
+                                        @using (Html.BeginForm("AddToCart", "Products", new { @productID = item.ProductID }, FormMethod.Post, new { @class = "text-center" }))
+                                        {
+                                            @*@Html.HiddenFor(p => p.ProductID)*@
+                                            <span class="label">Quantity: </span>
+                                            @Html.TextBox("Qty", 1, new { @class = "form-control", style = "max-width: 50px;display: inline;" })
+                                            <input type="submit" value="Add to Cart" class="btn btn-success" name="qty" />
+                                        }
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    } @*end foreach*@
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 offset-lg-10">
+                <div class="text-center">
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    <br /> <br />
+                    <ul class="pagination pagination-md">
+                        @for (int i = 1; i <= Model.PageCount; i++)
+                        {
+                            <li class="page-item-disabled">
+                                <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0" tabindex="-1"
+                                   href="@Url.Action("Index", new { page = i} )">@i</a>
+                            </li>
+                        }
+                    </ul>
+        </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Content -->

@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="MyStoreModel.Shipper" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="MyStoreModel.StockStatus" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MyStoreModel.Supplier" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyStoreModel.UserRegistry" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MyStoreModel.OrderDetail" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
         <AssociationConnector Association="MyStoreModel.FK_Products_Category" ManuallyRouted="false" />
         <AssociationConnector Association="MyStoreModel.FK_Orders_Customers" ManuallyRouted="false" />
@@ -25,6 +24,7 @@
         <AssociationConnector Association="MyStoreModel.FK_Products_Shippers" ManuallyRouted="false" />
         <AssociationConnector Association="MyStoreModel.FK_Products_StockStatus" ManuallyRouted="false" />
         <AssociationConnector Association="MyStoreModel.FK_Products_Suppliers" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MyStoreModel.UserRegistry" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

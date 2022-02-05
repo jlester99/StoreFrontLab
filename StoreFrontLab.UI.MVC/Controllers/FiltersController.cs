@@ -22,7 +22,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
             return View();
         }
 
-        public ActionResult AllProducts(string searchFilter, int categoryId = 0)
+        public ActionResult TableViewProducts(string searchFilter, int categoryId = 0)
         {
             var products = db.Products.Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier);
 

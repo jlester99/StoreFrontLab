@@ -34,7 +34,7 @@ namespace DATA.EF
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<StockStatus> StockStatus1 { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
-        public virtual DbSet<UserRegistry> UserRegistries { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<UserRegistry> UserRegistries { get; set; }
     }
 }

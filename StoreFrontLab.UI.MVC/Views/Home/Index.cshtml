@@ -8,23 +8,43 @@
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="3"></li>
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner" id="carousel-main">
         <div class="carousel-item active">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                        <img src="~/Content/assets/img/multiprod_ccexpress 2.png" alt=""/>
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left">
+                            <h1 class="h1">repr in voluptate</h1>
+                            <h3 class="h2">ullamco laboris nisi ut </h3>
+                            <p>
+                                we bring you 100% free css templates for your websites.
+                                if you wish to support templatemo, please make a small contribution via paypal or tell your friends about our website. thank you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
                         @* <img class="img-fluid" src="~/content/assets/img/banner_img_01.jpg" alt="">*@
 
-                        <img class="img-fluid" src="~/Content/assets/img/dog with treat jar_ccexpress 2.png" alt="" />
+                        <img src="~/Content/assets/img/dog with treat jar_ccexpress 2.png" alt="" />
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left align-self-center">
-                            <h1 class="h1 text-success"><b>Paw Friends Boutique</b></h1>
+                            <h1 class="h1 text-success"><b>FRIENDS 4 Paws</b></h1>
                             <h3 class="h2">Helping you be there for your furry friends!</h3>
                             <p>
-                                Paw Friends Boutique is an ecommerce html5 css template with latest version of bootstrap 5 (beta 1).
-                                
+                                FRIENDS 4 Paws is an ecommerce html5 css template with latest version of bootstrap 5 (beta 1).
+
                             </p>
                         </div>
                     </div>
@@ -36,10 +56,10 @@
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 
-                        <img src="~/Content/assets/img/dog iwth purple frame_ccexpress.png" alt="" style="width:400px;" />
+                        <img src="~/Content/assets/img/dog iwth purple frame_ccexpress.png" alt="" />
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left">
+                        <div class="text-align-left align-self-center">
                             <h1 class="h1">proident occaecat</h1>
                             <h3 class="h2">aliquip ex ea commodo consequat</h3>
                             <p>
@@ -56,10 +76,10 @@
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
 
-                        <img src="~/Content/assets/img/dog on napperbed__ccexpress 2.png" alt="" style="width:700px;"/>
+                        <img src="~/Content/assets/img/dog on napperbed__ccexpress 2.png" alt="" />
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left">
+                        <div class="text-align-left align-self-center">
                             <h1 class="h1">repr in voluptate</h1>
                             <h3 class="h2">ullamco laboris nisi ut </h3>
                             <p>
@@ -71,6 +91,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
         <i class="fas fa-chevron-left"></i>
@@ -93,60 +114,52 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-4 p-5 mt-3 catContainer">
-            <a href="@Url.Action("AllProducts", "Products")">
-                 <img src="~/content/assets/img/category_img_01.jpg" class="rounded-circle catImage text-center">Shop All</a>
-            </div>
-        <div class="col-12 col-md-4 p-5 mt-3 catContainer">
-            <a href="@Url.Action("AllProducts", "Products", new { categoryId="5"})">
-
-                <img src="~/Content/assets/img/CP couch bed_ccexpress.png" class="rounded-circle img-fluid border catImage"/>
-            </a>
+            <img src="~/Content/assets/img/Category - All.jpg" class="rounded-circle catImage text-center">
             <div class="catMiddle">
-                <div class="catText">Beds</div>
+                <a class="catText" href="@Url.Action("Index", "Products")">Shop All</a>
             </div>
         </div>
 
         <div class="col-12 col-md-4 p-5 mt-3 catContainer">
-            <a href="@Url.Action("AllProducts", "Products", new { categoryId="3"})">
-
-
-                <img src="~/Content/assets/img/Seatbelt collar_ccexpress.png" class="rounded-circle img-fluid border catImage" />
-            </a>
+            <img src="~/Content/assets/img/Category - Beds.jpg" class="rounded-circle img-fluid border catImage" />
             <div class="catMiddle">
-                <div class="catText">Leashes & Collars</div>
+                    <a class="catText" href="@Url.Action("Index", "Products", new { categoryId="5"})">Beds</a>
             </div>
         </div>
-        </div>
-    <div class="row">
+
         <div class="col-12 col-md-4 p-5 mt-3 catContainer">
-            <a href="@Url.Action("AllProducts", "Products", new { categoryId="2"})">
-
-                <img src="~/Content/assets/img/How you doin shirt_ccexpress.png" class="rounded-circle img-fluid border catImage">
-            </a>
+                <img src="~/Content/assets/img/Category - Leashes.jpg" class="rounded-circle img-fluid border catImage" />
             <div class="catMiddle">
-                <div class="catText">Apparel</div>
+                    <a class="catText" href="@Url.Action("Index", "Products", new { categoryId="3"})">Leashes & Collars</a>
+                </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3 catContainer">
-            <a href="@Url.Action("AllProducts", "Products", new { categoryId="4"})">
-                <img src="~/Content/assets/img/blue bowl_ccexpress.png"  class="rounded-circle img-fluid border catImage" />
-            </a>
-            <div class="catMiddle">
-                <div class="catText">Mealtime</div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3 catContainer">
-            <a href="@Url.Action("AllProducts", "Products", new { categoryId="1"})">
 
-
-                <img src="~/Content/assets/img/turkey head_ccexpress.png" class="rounded-circle img-fluid border catImage"/>
-            </a>
-            <div class="catMiddle">
-                <div class="catText">Playtime</div>
+        <div class="row">
+            <div class="col-12 col-md-4 p-5 mt-3 catContainer">
+                <img src="~/Content/assets/img/Category - Apparel.jpg" class="rounded-circle img-fluid border catImage">
+                <div class="catMiddle">
+                    <a class="catText" href="@Url.Action("Index", "Products", new { categoryId="2"})">Apparel</a>
+                </div>
             </div>
+
+            <div class="col-12 col-md-4 p-5 mt-3 catContainer">
+                <img src="~/Content/assets/img/Category - Mealtime.jpg" class="rounded-circle img-fluid border catImage" />
+                <div class="catMiddle">
+                    <a class="catText" href="@Url.Action("Index", "Products", new { categoryId="4"})">Mealtime</a>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 p-5 mt-3 catContainer">
+                    <img src="~/Content/assets/img/Category - Playtime.jpg" class="rounded-circle img-fluid border catImage" />
+                    <div class="catMiddle">
+                        <a class="catText" href="@Url.Action("Index", "Products", new { categoryId="1"})">Playtime</a>
+                    </div>
+            </div>
+
         </div>
 
     </div>
+
 </section>
 <!-- end categories of the month -->
 <!-- start featured product -->

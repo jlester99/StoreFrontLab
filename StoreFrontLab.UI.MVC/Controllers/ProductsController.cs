@@ -10,7 +10,8 @@ using System.Web.Mvc;
 using DATA.EF;
 using StoreFrontLab.UI.MVC.Utilities; //This gives us access to our ImageUtility class
 using StoreFrontLab.UI.MVC.Models;
-
+using PagedList;
+using PagedList.Mvc;
 
 namespace StoreFrontLab.UI.MVC.Controllers
 {
@@ -18,12 +19,84 @@ namespace StoreFrontLab.UI.MVC.Controllers
     {
         private MyStoreEntities db = new MyStoreEntities();
 
-        //// GET: Products
-        //public ActionResult Index()
-        //{
-        //    var products = db.Products.Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier);
-        //    return View(products.ToList());
-        //}
+        // get: products
+        public ActionResult Index(string searchFilter, int categoryId = 0, int stockStatusId = 0, int page = 1)
+        {
+            int pageSize = 3;
+
+            var products = db.Products
+                .Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier);
+
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Description");
+            ViewBag.StockStatusID = new SelectList(db.StockStatus1, "StockStatusID", "Description");
+
+            //initial instance of the products collection.  This will be filtered down based on DDL selection and/or search filter
+            var prodSearchCard = db.Products.OrderBy(p => p.CategoryID).ToList();
+
+
+            if (!String.IsNullOrEmpty(searchFilter))
+            {
+                prodSearchCard = db.Products.OrderBy(p => p.CategoryID)
+                .Where(p => p.ProductName.ToLower().Contains(searchFilter.ToLower()) ||
+                p.Description.ToLower().Contains(searchFilter.ToLower()))
+                .Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier)
+                .ToList();
+
+            }
+
+
+            if (categoryId != 0)
+            {
+                prodSearchCard = prodSearchCard.Where(p => p.CategoryID == categoryId).ToList();
+            }
+
+            if (stockStatusId != 0)
+            {
+                prodSearchCard = prodSearchCard.Where(p => p.CategoryID == categoryId).ToList();
+            }
+
+
+            return View(prodSearchCard.ToPagedList(page, pageSize));
+
+        }
+
+
+
+        //get all products and show on screen with search and paging
+        public ActionResult TableViewProducts(string searchFilter, int categoryId = 0, int stockStatusId = 0)
+        {
+            var products = db.Products.Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier);
+
+            //ViewBag object used to populate the Html.DropDownList in the View
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Description");
+
+            ViewBag.StockStatusID = new SelectList(db.StockStatus1, "StockStatusID", "Description");
+
+            //initial instance of the products collection.  This will be filtered down based on DDL selection and/or search filter
+            var prodSearchCat = db.Products.OrderBy(p => p.CategoryID).ToList();
+
+
+            if (!String.IsNullOrEmpty(searchFilter))
+            {
+                prodSearchCat = db.Products.OrderBy(p => p.CategoryID)
+                .Where(p => p.ProductName.ToLower().Contains(searchFilter.ToLower()) ||
+                p.Description.ToLower().Contains(searchFilter.ToLower()))
+                .Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier)
+                .ToList();
+
+            }
+
+            if (categoryId != 0)
+            {
+                prodSearchCat = prodSearchCat.Where(p => p.CategoryID == categoryId).ToList();
+            }
+
+            
+            return View(prodSearchCat);
+
+        }
+
+
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)
@@ -39,38 +112,6 @@ namespace StoreFrontLab.UI.MVC.Controllers
             }
             return View(product);
         }
-
-        //get all products and show on screen with search and paging
-        public ActionResult AllProducts(string searchFilter, int categoryId = 0)
-        {
-            var products = db.Products.Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier);
-
-            //ViewBag object used to populate the Html.DropDownList in the View
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Description");
-
-            //initial instance of the products collection.  This will be filtered down based on DDL selection and/or search filter
-            var prodSearchCat = db.Products.ToList();
-
-
-            if (!String.IsNullOrEmpty(searchFilter))
-            {
-                prodSearchCat = db.Products
-                .Where(p => p.ProductName.ToLower().Contains(searchFilter.ToLower()) ||
-                p.Description.ToLower().Contains(searchFilter.ToLower()))
-                .Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier)
-                .ToList();
-
-            }
-
-            if (categoryId != 0)
-            {
-                prodSearchCat = prodSearchCat.Where(p => p.CategoryID == categoryId).ToList();
-            }
-
-            return View(prodSearchCat);
-
-        }
-
 
         //Shopping Cart Step 3
         public ActionResult AddToCart(int qty, int productID)
@@ -254,7 +295,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
                 #endregion
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("TableViewProducts");
             }
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Description", product.CategoryID);
             ViewBag.ShipperID = new SelectList(db.Shippers, "ShipperID", "Name", product.ShipperID);

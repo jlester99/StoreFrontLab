@@ -3,11 +3,17 @@ Custom Css
 */
 
 body {
-    background-color: lightcyan;
+    background: repeating-linear-gradient(90deg, lightyellow, transparent, yellow, transparent, lightyellow, transparent);
 }
 
 .navbar {
-    background-color: lightslategray;
+    /*background: repeating-linear-gradient(60deg, yellow, blue, transparent, red, transparent, yellow, transparent, blue, yellow, red, transparent, red, yellow, blue, transparent);*/
+    background: repeating-linear-gradient(30deg, red, transparent, blue, transparent, yellow, transparent, yellow, red, transparent, blue, transparent);
+    opacity: .8
+}
+
+.navbar-icon {
+    background: transparent;
 }
 
 .catContainer {
@@ -47,4 +53,38 @@ body {
     padding: 16px 32px;
     font-weight: bolder !important;
     font-size: 2em !important;
+}
+#carousel-main {
+    /*background: radial-gradient(circle, blue 5%, yellow 60%, transparent, red 25%, transparent);*/
+    /*, turquoise, light yellow, red, yellow, blue, blue, yellow, red, blue, yellow, red, red, yellow, blue, blue, yellow, red);*/
+    /*background: repeating-radial-gradient(yellow, transparent, blue, transparent, red, transparent);
+    background: repeating-linear-gradient(80deg, blue, transparent, yellow, transparent, red, transparent);*/
+    background: repeating-linear-gradient(20deg, yellow, transparent, lightyellow, lightyellow, yellow, transparent);
+    color: darkblue;
+    font-weight: 900;
+    height:700px;
+}
+
+.carousel-item img {
+    width: 600px;
+    height: 600px;
+}
+
+.fa i{
+    font-size: large;
+}
+
+.filters a {
+    /*font-weight: 400 !important;*/
+    color: navy;
+}
+
+.badgeNumber {
+    font-size: .75rem !important;
+    background-color: floralwhite !important;
+}
+
+.nav-icon fa-fw {
+    font-size: x-large;
+  
 }
