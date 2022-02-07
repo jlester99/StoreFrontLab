@@ -47,7 +47,7 @@
                     <div class="text-center">
                         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
                         <br /> <br />
-                        <ul class="pagination pagination-md active">
+                        <ul class="pagination pagination-sm active">
                             @for (int i = 1; i <= Model.PageCount; i++)
 
                             {
@@ -110,14 +110,12 @@
                 <div class="row">
                     @foreach (var item in Model)
                     {
-                        <div class="col-md-4 catContainer">
+                        <div class="col-md-4 catContainer justify-content-left">
                             <div class="card mb-4 product-wap rounded-0">
                                 <div class="card rounded-0">
-
-                                    @Html.HiddenFor(modelItem => item.ProductID)
                                     @*<a href="@Url.Action("Details", "Products", new { id = @item.ProductID })">*@
                                     <img class="card-img catImage rounded-0 img-fluid text-decoration-none"
-                                         src="~/Content/assets/img/@item.ProductImage" alt="Product image" title="@item.ProductName" />
+                                         src="~/Content/assets/img/@item.ProductImage" alt="Indivual image of product retrieved from the database" title="@item.ProductName" />
                                     <div class="catMiddle">
                                         <a class="catText" href="@Url.Action("Details", "Products", new { id=@item.ProductID})">Details</a>
                                     </div>
@@ -180,7 +178,7 @@
                 <div class="text-center">
                     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
                     <br /> <br />
-                    <ul class="pagination pagination-md">
+                    <ul class="pagination pagination-sm">
                         @for (int i = 1; i <= Model.PageCount; i++)
                         {
                             <li class="page-item-disabled">

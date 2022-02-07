@@ -214,10 +214,9 @@
     <Content Include="Content\assets\css\templatemo.min.css" />
     <Content Include="Content\assets\img\about-hero.svg" />
     <Content Include="Content\assets\img\ajax-loader.gif" />
-    <Content Include="Content\assets\img\apple-icon.png" />
-    <Content Include="Content\assets\img\banner_img_01.jpg" />
-    <Content Include="Content\assets\img\banner_img_02.jpg" />
-    <Content Include="Content\assets\img\banner_img_03.jpg" />
+    <Content Include="Content\assets\img\android-chrome-192x192.png" />
+    <Content Include="Content\assets\img\android-chrome-512x512.png" />
+    <Content Include="Content\assets\img\apple-touch-icon.png" />
     <Content Include="Content\assets\img\blue bowl.png" />
     <Content Include="Content\assets\img\blue bowl_ccexpress.png" />
     <Content Include="Content\assets\img\Bolster Bed_ccexpress.png" />
@@ -225,22 +224,19 @@
     <Content Include="Content\assets\img\brand_02.png" />
     <Content Include="Content\assets\img\brand_03.png" />
     <Content Include="Content\assets\img\brand_04.png" />
+    <Content Include="Content\assets\img\Carousel dog with treat jar.png" />
     <Content Include="Content\assets\img\Category - All.jpg" />
     <Content Include="Content\assets\img\Category - Apparel.jpg" />
     <Content Include="Content\assets\img\Category - Beds.jpg" />
     <Content Include="Content\assets\img\Category - Leashes.jpg" />
     <Content Include="Content\assets\img\Category - Mealtime.jpg" />
     <Content Include="Content\assets\img\Category - Playtime.jpg" />
-    <Content Include="Content\assets\img\category_img_01.jpg" />
-    <Content Include="Content\assets\img\category_img_02.jpg" />
-    <Content Include="Content\assets\img\category_img_03.jpg" />
     <Content Include="Content\assets\img\dog iwth purple frame_ccexpress.png" />
     <Content Include="Content\assets\img\dog on napperbed__ccexpress 2.png" />
     <Content Include="Content\assets\img\dog with treat jar_ccexpress 2.png" />
+    <Content Include="Content\assets\img\favicon-16x16.png" />
+    <Content Include="Content\assets\img\favicon-32x32.png" />
     <Content Include="Content\assets\img\favicon.ico" />
-    <Content Include="Content\assets\img\feature_prod_01.jpg" />
-    <Content Include="Content\assets\img\feature_prod_02.jpg" />
-    <Content Include="Content\assets\img\feature_prod_03.jpg" />
     <Content Include="Content\assets\img\How you doin shirt_ccexpress.png" />
     <Content Include="Content\assets\img\I%27d Rather Be Watching Friends Food Dish.jpg" />
     <Content Include="Content\assets\img\joey doesn%27t shar_ccexpress.png" />
@@ -251,6 +247,7 @@
     <Content Include="Content\assets\img\NoImage.png" />
     <Content Include="Content\assets\img\Seatbelt collar_ccexpress.png" />
     <Content Include="Content\assets\img\turkey head_ccexpress.png" />
+    <Content Include="Content\assets\img\WB logof.png" />
     <Content Include="Content\assets\img\you%27re my lobster shirt.jpg" />
     <Content Include="Content\assets\js\bootstrap.bundle.min.js" />
     <Content Include="Content\assets\js\custom.js" />
@@ -487,6 +484,7 @@
     <Content Include="Views\UserRegistries\Details.cshtml" />
     <Content Include="Views\UserRegistries\Edit.cshtml" />
     <Content Include="Views\UserRegistries\Index.cshtml" />
+    <Content Include="Views\Products\TableViewDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

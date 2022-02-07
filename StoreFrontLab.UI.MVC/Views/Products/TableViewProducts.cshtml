@@ -87,7 +87,7 @@
             <tr>
 
                 <td>
-                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID })"><img src="~/Content/assets/img/t_@item.ProductImage" alt="Product image" title="@item.ProductName" /></a>
+                    <a href="@Url.Action("TableViewDetails", "Products", new { id = item.ProductID })"><img src="~/Content/assets/img/t_@item.ProductImage" alt="Thumbnail version of individual product image retrieve from the database of products" title="@item.ProductName" /></a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProductName)
@@ -109,7 +109,7 @@
                     <a href="@Url.Action("Edit", "Products", new { id = item.ProductID })">
                         <i class="fa fa-pen-square" aria-hidden="true"></i>
                     </a> <br />
-                    <a href="@Url.Action("Details", "Products", new { id = item.ProductID })">
+                    <a href="@Url.Action("TableViewDetails", "Products", new { id = item.ProductID })">
                         <i class="fa fa-info-circle" aria-hidden="true"></i>
                     </a><br />
                     <a href="@Url.Action("Delete", "Products", new { id = item.ProductID })">

@@ -2,9 +2,14 @@
 <html lang="en">
 
 <head>
-    <title>FRIENDS 4 Paws | @ViewBag.Title</title>
+    <title>FRIENDS-4-Paws | @ViewBag.Title</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    @*<link rel="manifest" href="/site.webmanifest">*@
 
     <link rel="apple-touch-icon" href="~/Content/assets/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico">
@@ -15,6 +20,12 @@
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+
+    @* ADDED jQueryUI CSS CDN - note: themenames are swappable.*@
+    @*NOTE, Module 5 AJAX: find names at jqueryui.com/themeroller, gallery tab (like excite-bike, south-street or sunny)*@
+    
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css">
+
     <link rel="stylesheet" href="~/Content/assets/css/fontawesome.min.css">
     <!--
 
@@ -30,8 +41,8 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="@Url.Action("Index", "Home")">
-                FRIENDS 4 Paws
+            <a class="navbar-brand logo h1 align-self-center" href="@Url.Action("Index", "Home")">
+                FRIENDS-4-Paws
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarsupportedcontent" aria-expanded="false" aria-label="toggle navigation">
@@ -118,7 +129,7 @@
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">FRIENDS 4 Paws</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">FRIENDS-4-Paws</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -196,7 +207,7 @@
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light text-center">
-                            &copy; @DateTime.Now.Year FRIENDS 4 Paws.  All rights reserved
+                            &copy; @DateTime.Now.Year FRIENDS-4-Paws.  All rights reserved
                             <br />
                             Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo | Customized by Janet Lester</a>
                             <br />**For educational purposes only**
@@ -211,7 +222,9 @@
     <!-- Start Script -->
     <script src="~/Content/assets/js/jquery-1.11.0.min.js"></script>
     <script src="~/Content/assets/js/jquery-migrate-1.2.1.min.js"></script>
+    
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
     <!-- ADDED jQuery Ajax CDN-->
     <script src="https://cdn.jsdelivr.net/jquery.ajax.unobtrusive/3.2.4/jquery.unobtrusive-ajax.min.js"></script>
 

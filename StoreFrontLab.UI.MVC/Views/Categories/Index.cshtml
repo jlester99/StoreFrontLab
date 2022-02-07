@@ -51,7 +51,7 @@
             $("#CategoryDetails").data('cId', $(this).attr('id'))
                 .dialog({
                     width: 400,
-                    height: 200,
+                    height: 225,
                     open: function () {
                         var catID = $(this).data('cId');
                         $(this).load("/Categories/CategoryDetails/" + catID);
@@ -59,6 +59,7 @@
                     title: "Category Details",
                     modal: true,
                     resizable: false
+                   
                 })
         });//end details click event
 
