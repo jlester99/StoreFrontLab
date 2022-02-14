@@ -24,7 +24,7 @@
     @* ADDED jQueryUI CSS CDN - note: themenames are swappable.*@
     @*NOTE, Module 5 AJAX: find names at jqueryui.com/themeroller, gallery tab (like excite-bike, south-street or sunny)*@
     
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/excite-bike/jquery-ui.css">
 
     <link rel="stylesheet" href="~/Content/assets/css/fontawesome.min.css">
     <!--
@@ -64,6 +64,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("Contact","Home")">Contact</a>
                         </li>
+
                     </ul>
                 </div>
                 <div class="navbar navbar-icon align-self-center d-flex">
@@ -92,12 +93,23 @@
                             </span>
                         }
                     </a>
-                    @*<a href="@Url.Action("Index", "ShoppingCart")"></a>*@
 
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        @*<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>*@
+                        
+                    @*<div class="nav-item dropdown">*@
+                            @*<div class="dropdown-menu account-dropdown" style="background-color: lightgray;">
+                                @Html.Partial("_LoginPartial")*@
+                        <a class="nav-icon nav-link position-relative text-decoration-none" href="@Url.Action("Login", "Account")">
+                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        </a>
+                            @*</div>*@
+                    </div>
+
+
+
+
+                    
                         @*<span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>*@
-                    </a>
                 </div>
             </div>
 
@@ -110,9 +122,9 @@
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <form action="@Url.Action("Index", "Products")" method="get" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputmodalsearch" name="q" placeholder="search ...">
+                    <input type="text" class="form-control" id="inputmodalsearch" name="searchFilter" placeholder="search ...">
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
@@ -128,8 +140,8 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">FRIENDS-4-Paws</h2>
+                <div class="offset-md-1 col-md-3 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">FRIENDS-4-Paws</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -144,40 +156,12 @@
                             <a class="text-decoration-none" href="mailto:janet.lester1@outlook.com">info@friends4paws.com</a>
                         </li>
                     </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products", new { categoryId="1"})">Playtime</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products", new { categoryId="5"})">Beds</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products", new { categoryId="4"})">Mealtime</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products", new { categoryId="2"})">Apparel</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products", new { categoryId="3"})">Collars & Leashes</a></li>
-                        @*<li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                            <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>*@
-                    </ul>
-                </div>
-
-                <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("About", "Home")">About Us</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products")">Shop Products</a></li>
-                        @*<li><a class="text-decoration-none" href="#">FAQs</a></li>*@
-                        <li><a class="text-decoration-none" href="@Url.Action("Contact", "Home")">Contact Us</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="row text-light mb-4">
-                <div class="col-12 mb-3">
+            <div class="row text-light mb-4 w-100 my-3  border-light">
+                @*<div class="col-12 mb-3">
                     <div class="w-100 my-3 border-top border-light"></div>
-                </div>
+                </div>*@
                 <div class="col-auto me-auto">
-                    <ul class="list-inline text-left footer-icons">
+                    <ul class="list-inline text-left footer-icons mt-3">
                         <li class="list-inline-item border border-light rounded-circle text-center">
                             <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                         </li>
@@ -192,14 +176,35 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-auto">
-                    <label class="sr-only" for="subscribeEmail">Email address</label>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
-                        <div class="input-group-text btn-success text-light">Subscribe</div>
-                    </div>
-                </div>
+
             </div>
+        </div>
+
+                <div class="offset-md-1 col-md-3 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products", new { categoryId="1"})">Playtime</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products", new { categoryId="5"})">Beds</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products", new { categoryId="4"})">Mealtime</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products", new { categoryId="2"})">Apparel</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products", new { categoryId="3"})">Collars & Leashes</a></li>
+                        @*<li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
+                            <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>*@
+                    </ul>
+                </div>
+
+                <div class="offset-md-1 col-md-3 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("About", "Home")">About Us</a></li>
+                        <li><a class="text-decoration-none" href="@Url.Action("Index", "Products")">Shop Products</a></li>
+                        @*<li><a class="text-decoration-none" href="#">FAQs</a></li>*@
+                        <li><a class="text-decoration-none" href="@Url.Action("Contact", "Home")">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                </div>
         </div>
 
         <div class="w-100 bg-black py-3">
@@ -209,7 +214,7 @@
                         <p class="text-left text-light text-center">
                             &copy; @DateTime.Now.Year FRIENDS-4-Paws.  All rights reserved
                             <br />
-                            Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo | Customized by Janet Lester</a>
+                            Designed by <a style="text-decoration:none" rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo | Customized by Janet Lester</a>
                             <br />**For educational purposes only**
                         </p>
                     </div>
@@ -222,13 +227,14 @@
     <!-- Start Script -->
     <script src="~/Content/assets/js/jquery-1.11.0.min.js"></script>
     <script src="~/Content/assets/js/jquery-migrate-1.2.1.min.js"></script>
-    
+    <script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+
     <!-- ADDED jQuery Ajax CDN-->
     <script src="https://cdn.jsdelivr.net/jquery.ajax.unobtrusive/3.2.4/jquery.unobtrusive-ajax.min.js"></script>
 
-    <script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>*@
 
 
     <script src="~/Content/assets/js/templatemo.js"></script>

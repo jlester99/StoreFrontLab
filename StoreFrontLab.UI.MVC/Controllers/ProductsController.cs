@@ -22,18 +22,11 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // get: products
         public ActionResult Index(string searchFilter, int categoryId = 0, int stockStatusId = 0, int page = 1)
         {
-            int pageSize = 3;
-
+            int pageSize = 6;
             var products = db.Products
                 .Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier);
-
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Description");
-            ViewBag.StockStatusID = new SelectList(db.StockStatus1, "StockStatusID", "Description");
-
             //initial instance of the products collection.  This will be filtered down based on DDL selection and/or search filter
             var prodSearchCard = db.Products.OrderBy(p => p.CategoryID).ToList();
-
-
             if (!String.IsNullOrEmpty(searchFilter))
             {
                 prodSearchCard = db.Products.OrderBy(p => p.CategoryID)
@@ -41,26 +34,32 @@ namespace StoreFrontLab.UI.MVC.Controllers
                 p.Description.ToLower().Contains(searchFilter.ToLower()))
                 .Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier)
                 .ToList();
-
+                ViewBag.SelectedSearch = searchFilter;
             }
-
-
             if (categoryId != 0)
             {
                 prodSearchCard = prodSearchCard.Where(p => p.CategoryID == categoryId).ToList();
+                ViewBag.SelectedCategory = categoryId;
+                ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Description", categoryId);
             }
-
+            else
+            {
+                ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Description");
+            }
             if (stockStatusId != 0)
             {
-                prodSearchCard = prodSearchCard.Where(p => p.CategoryID == categoryId).ToList();
+                prodSearchCard = prodSearchCard.Where(p => p.StockStatusID == stockStatusId).ToList();
+                ViewBag.SelectedStockStatus = stockStatusId;
+                ViewBag.StockStatusID = new SelectList(db.StockStatus1, "StockStatusID", "Description", stockStatusId);
             }
-
-
+            else
+            {
+                ViewBag.StockStatusID = new SelectList(db.StockStatus1, "StockStatusID", "Description");
+            }
             return View(prodSearchCard.ToPagedList(page, pageSize));
-
         }
 
-
+        //[Authorize]
 
         //get all products and show on screen with search and paging
         public ActionResult TableViewProducts(string searchFilter, int categoryId = 0, int stockStatusId = 0)
@@ -73,12 +72,12 @@ namespace StoreFrontLab.UI.MVC.Controllers
             ViewBag.StockStatusID = new SelectList(db.StockStatus1, "StockStatusID", "Description");
 
             //initial instance of the products collection.  This will be filtered down based on DDL selection and/or search filter
-            var prodSearchCat = db.Products.OrderBy(p => p.CategoryID).ToList();
+            var prodSearchTable = db.Products.OrderBy(p => p.CategoryID).ToList();
 
 
             if (!String.IsNullOrEmpty(searchFilter))
             {
-                prodSearchCat = db.Products.OrderBy(p => p.CategoryID)
+                prodSearchTable = db.Products.OrderBy(p => p.CategoryID)
                 .Where(p => p.ProductName.ToLower().Contains(searchFilter.ToLower()) ||
                 p.Description.ToLower().Contains(searchFilter.ToLower()))
                 .Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier)
@@ -88,14 +87,19 @@ namespace StoreFrontLab.UI.MVC.Controllers
 
             if (categoryId != 0)
             {
-                prodSearchCat = prodSearchCat.Where(p => p.CategoryID == categoryId).ToList();
+                prodSearchTable = prodSearchTable.Where(p => p.CategoryID == categoryId).ToList();
             }
 
-            
-            return View(prodSearchCat);
+            if (stockStatusId != 0)
+            {
+                prodSearchTable = prodSearchTable.Where(p => p.StockStatusID == stockStatusId).ToList();
+            }
+
+
+            return View(prodSearchTable);
 
         }
-        
+
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)

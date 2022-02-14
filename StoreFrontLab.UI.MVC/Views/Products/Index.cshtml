@@ -5,13 +5,34 @@
 
 @{
     ViewBag.Title = "Product Card View";
+    int cat;
+    if (ViewBag.SelectedCategory != null)
+    {
+        cat = ViewBag.SelectedCategory;
+    }
+    else
+    {
+        cat = 0;
+    }
+    string search;
+    if (ViewBag.SelectedSearch != null)
+    {
+        search = ViewBag.SelectedSearch;
+    }
+    else
+    {
+        search = "";
+    }
+    int stockStat;
+    if (ViewBag.SelectedStockStatus != null)
+    {
+        stockStat = ViewBag.SelectedStockStatus;
+    }
+    else
+    {
+        stockStat = 0;
+    }
 }
-
-@*<h2>@ViewBag.Title</h2>*@
-
-
-@*@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
-
 
 <!-- Start Content -->
 <div class="row-border panel-body panel-primary">
@@ -28,7 +49,11 @@
         <div class="form-group">
             <div class="row py-4">
                 <div class="col-md-1 offset-md-1">
-                    <a href="@Url.Action("TableViewProducts","Products")" class="btn btn-success mt-1">Table View</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+
+                        <a href="@Url.Action("TableViewProducts","Products")" class="btn btn-success mt-1">Table View</a>
+                    }
                 </div>
                 <div class="col-md-2">
                     @Html.DropDownList("CategoryID", null, "Select a Category", htmlAttributes: new { @class = "form-control" })
@@ -36,9 +61,9 @@
                 <div class="col-md-2">
                     @Html.DropDownList("StockStatusID", null, "Select a Status", htmlAttributes: new { @class = "form-control" })
                 </div>
-                    <div class="col-md-1">
+                <div class="col-md-1">
                     <input type="submit" value="Search" class="btn btn-primary mt-2" />
-                    </div>
+                </div>
                 <div class="col-md-2" style="line-height:2">
                     <input type="text" name="searchFilter" placeholder="Search Products" />
                     <br />
@@ -51,10 +76,11 @@
                             @for (int i = 1; i <= Model.PageCount; i++)
 
                             {
-                                <li class="page-item-disabled">
+                                <li class="page-item-disabled active">
                                     <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" tabindex="-1"
-                                       href="@Url.Action("Index", new { page = i})">@i</a>
-                                       @*href="@Url.Action("Index", new { page = i, stockStatusId = , categoryId = , searchFiler =   })">@i</a>*@
+                                       @*href="@Url.Action("Index", new { page = i})">@i</a>*@
+                                       href="@Url.Action("Index", new { page = i, categoryId = cat, stockStatusId = stockStat, searchFilter = search})">@i</a>
+                                    @*href="@Url.Action("Index", new { page = i, stockStatusId = , categoryId = , searchFiler =   })">@i</a>*@
 
                                 </li>
 
@@ -183,12 +209,13 @@
                         {
                             <li class="page-item-disabled">
                                 <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0" tabindex="-1"
-                                   href="@Url.Action("Index", new { page = i} )">@i</a>
+                                   href="@Url.Action("Index", new { page = i, categoryId = ViewBag.SelectedCategory} )">@i</a>
                             </li>
                         }
                     </ul>
-        </div>
                 </div>
             </div>
         </div>
-        <!-- End Content -->
+    </div>
+</div>
+<!-- End Content -->

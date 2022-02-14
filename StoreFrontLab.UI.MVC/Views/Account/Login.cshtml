@@ -1,10 +1,10 @@
 ﻿@model StoreFrontLab.UI.MVC.Models.LoginViewModel
 
-@{
+@*@{
     ViewBag.Title = "Log in";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title.</h2>*@
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
@@ -49,11 +49,11 @@
             }
         </section>
     </div>
-    <div class="col-md-4">
+    @*<div class="col-md-4">
         <section id="socialLoginForm">
             @Html.Partial("_ExternalLoginsListPartial", new StoreFrontLab.UI.MVC.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
-    </div>
+    </div>*@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

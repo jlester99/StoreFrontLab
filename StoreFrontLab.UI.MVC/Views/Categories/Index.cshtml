@@ -55,6 +55,8 @@
                     open: function () {
                         var catID = $(this).data('cId');
                         $(this).load("/Categories/CategoryDetails/" + catID);
+                        $(this).closest(".ui-dialog")                            .find(".ui-dialog-titlebar-close")                            .removeClass("ui-dialog-titlebar-close")                            .removeClass("ui-widget-header")                            .html("<span class='ui-button-icon-primary ui-icon ui-icon-closethick'></span>");
+
                     },
                     title: "Category Details",
                     modal: true,
