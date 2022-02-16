@@ -83,3 +83,24 @@ body {
     font-size: x-large;
   
 }
+
+.carousel {
+    z-index: -1;
+}
+
+#templatemo_main_nav .dropdown-menu {
+    border: none;
+    background-color: transparent;
+    padding: 1rem;
+}
+
+#templatemo_main_nav .dropdown .btn {
+    font-size: 1.25rem;
+}
+
+#templatemo_main_nav .dropdown-menu .dropdown-item {
+    font-size: small !important;
+    background-color: transparent;
+    font-size: small !important;
+    
+}

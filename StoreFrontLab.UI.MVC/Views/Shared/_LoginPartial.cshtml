@@ -1,36 +1,32 @@
 ﻿@using Microsoft.AspNet.Identity
 @using DATA.EF
 
-@if (Request.IsAuthenticated)
-{
-    MyStoreEntities db = new MyStoreEntities();
-    string UserID = UserID = User.Identity.GetUserId();
-    UserRegistry currentUser = db.UserRegistries.Where(ur => ur.UserId == UserID).FirstOrDefault();
-    string userFN = "Guest";
+<div class="dropdown">
 
-    if (currentUser != null)
-    {
-        userFN = currentUser.FirstName;
-        
-    }
+    <button class="btn btn-default" type="button" id="loginMenu" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-fw fa-user text-dark mr-3"></i></button>
+    <ul class="dropdown-menu" aria-labelledby="loginMenu">
+        @if (Request.IsAuthenticated)
+        {
 
-
-   using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-        @Html.AntiForgeryToken()
-
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink($"Hello {userFN}", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        </ul>
-    }
-}
-else
-{
-    @*<ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>*@
-}
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+        <li>
+            @Html.ActionLink("Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="dropdown-item" })
+        </li>
+        <li>
+            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        </li>
+            }
+        }
+        else
+        {
+        <li>
+            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "dropdown-item" })
+        </li>
+        <li>
+            @Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "dropdown-item" })
+        </li>
+        }
+    </ul>
+</div>

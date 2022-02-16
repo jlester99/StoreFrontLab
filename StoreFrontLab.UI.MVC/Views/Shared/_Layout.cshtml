@@ -23,7 +23,7 @@
 
     @* ADDED jQueryUI CSS CDN - note: themenames are swappable.*@
     @*NOTE, Module 5 AJAX: find names at jqueryui.com/themeroller, gallery tab (like excite-bike, south-street or sunny)*@
-    
+
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/excite-bike/jquery-ui.css">
 
     <link rel="stylesheet" href="~/Content/assets/css/fontawesome.min.css">
@@ -93,23 +93,10 @@
                             </span>
                         }
                     </a>
-
-                        @*<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>*@
-                        
-                    @*<div class="nav-item dropdown">*@
-                            @*<div class="dropdown-menu account-dropdown" style="background-color: lightgray;">
-                                @Html.Partial("_LoginPartial")*@
-                        <a class="nav-icon nav-link position-relative text-decoration-none" href="@Url.Action("Login", "Account")">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        </a>
-                            @*</div>*@
+                    <div class="nav-item">
+                        @Html.Partial("_LoginPartial")
                     </div>
-
-
-
-
-                    
-                        @*<span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>*@
+                    @*<span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>*@
                 </div>
             </div>
 
@@ -156,29 +143,29 @@
                             <a class="text-decoration-none" href="mailto:janet.lester1@outlook.com">info@friends4paws.com</a>
                         </li>
                     </ul>
-            <div class="row text-light mb-4 w-100 my-3  border-light">
-                @*<div class="col-12 mb-3">
-                    <div class="w-100 my-3 border-top border-light"></div>
-                </div>*@
-                <div class="col-auto me-auto">
-                    <ul class="list-inline text-left footer-icons mt-3">
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="row text-light mb-4 w-100 my-3  border-light">
+                        @*<div class="col-12 mb-3">
+                                <div class="w-100 my-3 border-top border-light"></div>
+                            </div>*@
+                        <div class="col-auto me-auto">
+                            <ul class="list-inline text-left footer-icons mt-3">
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                                </li>
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                                </li>
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+                                </li>
+                                <li class="list-inline-item border border-light rounded-circle text-center">
+                                    <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                                </li>
+                            </ul>
+                        </div>
 
-            </div>
-        </div>
+                    </div>
+                </div>
 
                 <div class="offset-md-1 col-md-3 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
@@ -204,7 +191,7 @@
                     </ul>
                 </div>
 
-                </div>
+            </div>
         </div>
 
         <div class="w-100 bg-black py-3">
@@ -233,9 +220,6 @@
 
     <!-- ADDED jQuery Ajax CDN-->
     <script src="https://cdn.jsdelivr.net/jquery.ajax.unobtrusive/3.2.4/jquery.unobtrusive-ajax.min.js"></script>
-
-    @*<script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>*@
-
 
     <script src="~/Content/assets/js/templatemo.js"></script>
     <script src="~/Content/assets/js/custom.js"></script>
