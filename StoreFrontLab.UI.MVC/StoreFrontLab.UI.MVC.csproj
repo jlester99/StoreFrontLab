@@ -220,10 +220,6 @@
     <Content Include="Content\assets\img\blue bowl.png" />
     <Content Include="Content\assets\img\blue bowl_ccexpress.png" />
     <Content Include="Content\assets\img\Bolster Bed_ccexpress.png" />
-    <Content Include="Content\assets\img\brand_01.png" />
-    <Content Include="Content\assets\img\brand_02.png" />
-    <Content Include="Content\assets\img\brand_03.png" />
-    <Content Include="Content\assets\img\brand_04.png" />
     <Content Include="Content\assets\img\Carousel dog with treat jar.png" />
     <Content Include="Content\assets\img\Category - All.jpg" />
     <Content Include="Content\assets\img\Category - Apparel.jpg" />
@@ -234,6 +230,7 @@
     <Content Include="Content\assets\img\dog iwth purple frame_ccexpress.png" />
     <Content Include="Content\assets\img\dog on napperbed__ccexpress 2.png" />
     <Content Include="Content\assets\img\dog with treat jar_ccexpress 2.png" />
+    <Content Include="Content\assets\img\Dog_with_pivot_couch.png" />
     <Content Include="Content\assets\img\favicon-16x16.png" />
     <Content Include="Content\assets\img\favicon-32x32.png" />
     <Content Include="Content\assets\img\favicon.ico" />
@@ -241,9 +238,7 @@
     <Content Include="Content\assets\img\I%27d Rather Be Watching Friends Food Dish.jpg" />
     <Content Include="Content\assets\img\joey doesn%27t shar_ccexpress.png" />
     <Content Include="Content\assets\img\multi products_ccexpress.png" />
-    <Content Include="Content\assets\img\multiprod_ccexpress 1.png" />
     <Content Include="Content\assets\img\multiprod_ccexpress 2.png" />
-    <Content Include="Content\assets\img\multiprod_ccexpress.png" />
     <Content Include="Content\assets\img\NoImage.png" />
     <Content Include="Content\assets\img\Seatbelt collar_ccexpress.png" />
     <Content Include="Content\assets\img\turkey head_ccexpress.png" />
