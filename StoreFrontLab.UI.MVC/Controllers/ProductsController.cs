@@ -59,8 +59,6 @@ namespace StoreFrontLab.UI.MVC.Controllers
             return View(prodSearchCard.ToPagedList(page, pageSize));
         }
 
-        //[Authorize]
-
         //get all products and show on screen with search and paging
         public ActionResult TableViewProducts(string searchFilter, int categoryId = 0, int stockStatusId = 0)
         {
@@ -184,7 +182,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
 
-
+        [Authorize]
         // GET: Products/Create
         public ActionResult Create()
         {
@@ -248,6 +246,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
             return View(product);
         }
 
+        [Authorize]
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -320,7 +319,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "Name", product.SupplierID);
             return View(product);
         }
-
+        [Authorize]
         // GET: Products/Delete/5
         public ActionResult Delete(int? id)
         {

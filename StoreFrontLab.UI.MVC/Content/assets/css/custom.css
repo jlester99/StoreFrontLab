@@ -3,13 +3,20 @@ Custom Css
 */
 
 body {
-    background: repeating-linear-gradient(90deg, lightyellow, transparent, yellow, transparent, lightyellow, transparent);
+    /*background: repeating-linear-gradient(90deg, lightyellow, transparent, yellow, transparent, lightyellow, transparent);*/
+    background-color: white;
+    background-image: url('../img/jonathan-bean-ywnnwzcdR5o-unsplash.jpg');
+    background-image: url('../img/casey-horner-9vf1uj6i6Ww-unsplash.jpg');
+    background: repeating-linear-gradient(120deg, steelblue, transparent, lightyellow, steelblue, transparent,  lightyellow, steelblue, transparent,  lightyellow);    
+    background: repeating-linear-gradient(120deg, steelblue, transparent, lightyellow, steelblue, transparent);
+    background: repeating-linear-gradient(120deg, steelblue, transparent);
 }
 
 .navbar {
     /*background: repeating-linear-gradient(60deg, yellow, blue, transparent, red, transparent, yellow, transparent, blue, yellow, red, transparent, red, yellow, blue, transparent);*/
-    background: repeating-linear-gradient(30deg, red, transparent, blue, transparent, yellow, transparent, yellow, red, transparent, blue, transparent);
-    opacity: .8
+    background: repeating-linear-gradient(30deg, red, transparent, steelblue, transparent, yellow, transparent, yellow, red, transparent, steelblue, transparent);
+    /*opacity: .8*/
+    background-color: white;
 }
 
 .navbar-icon {
@@ -55,14 +62,28 @@ body {
     font-size: 2em !important;
 }
 #carousel-main {
-    /*background: radial-gradient(circle, blue 5%, yellow 60%, transparent, red 25%, transparent);*/
-    /*, turquoise, light yellow, red, yellow, blue, blue, yellow, red, blue, yellow, red, red, yellow, blue, blue, yellow, red);*/
-    /*background: repeating-radial-gradient(yellow, transparent, blue, transparent, red, transparent);
-    background: repeating-linear-gradient(80deg, blue, transparent, yellow, transparent, red, transparent);*/
-    background: repeating-linear-gradient(20deg, yellow, transparent, lightyellow, lightyellow, yellow, transparent);
+    /*background: repeating-linear-gradient(20deg, yellow, transparent, lightyellow, lightyellow, yellow, transparent);*/
+    /*background: repeating-linear-gradient(18deg, steelblue, transparent, yellow, transparent, red, transparent, lightyellow, yellow, transparent, steelblue, transparent, yellow, transparent, red, transparent, steelblue);
+    background: repeating-linear-gradient(18deg, yellow, transparent, red, transparent, yellow, transparent, steelblue, transparent, yellow, transparent);*/
+    background-color: white;
     color: darkblue;
     font-weight: 900;
-    height:700px;
+    height: 700px;
+}
+
+#template-mo-zay-hero-carousel .carousel-indicators li {
+    background-color: navy;
+}
+
+#template-mo-zay-hero-carousel .carousel-control-prev i,
+#template-mo-zay-hero-carousel .carousel-control-next i {
+    color: navy !important;
+    opacity: .3;
+}
+#template-mo-zay-hero-carousel .carousel-control-prev :hover,
+#template-mo-zay-hero-carousel .carousel-control-next :hover {
+    color: yellow !important;
+    opacity: .3;
 }
 
 .fa i{
@@ -100,7 +121,22 @@ body {
 
 #templatemo_main_nav .dropdown-menu .dropdown-item {
     font-size: small !important;
-    background-color: transparent;
+    background-color: lightsteelblue;
     font-size: small !important;
     
+}
+.deleteIcon {
+    color: #f72d2d
+}
+.editIcon {
+    color:#149614
+}
+
+.footerText, .footerText a {
+    font-size: .75rem !important;
+}
+
+div#template-mo-zay-hero-carousel {
+    position: relative;
+    z-index: 3000;
 }
