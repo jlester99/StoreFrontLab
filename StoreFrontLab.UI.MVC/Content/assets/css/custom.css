@@ -9,7 +9,7 @@ body {
     background-image: url('../img/casey-horner-9vf1uj6i6Ww-unsplash.jpg');
     background: repeating-linear-gradient(120deg, steelblue, transparent, lightyellow, steelblue, transparent,  lightyellow, steelblue, transparent,  lightyellow);    
     background: repeating-linear-gradient(120deg, steelblue, transparent, lightyellow, steelblue, transparent);
-    background: repeating-linear-gradient(120deg, steelblue, transparent);
+    background: repeating-linear-gradient(90deg, transparent, lightsteelblue, transparent);
 }
 
 .navbar {
@@ -65,7 +65,7 @@ body {
     /*background: repeating-linear-gradient(20deg, yellow, transparent, lightyellow, lightyellow, yellow, transparent);*/
     /*background: repeating-linear-gradient(18deg, steelblue, transparent, yellow, transparent, red, transparent, lightyellow, yellow, transparent, steelblue, transparent, yellow, transparent, red, transparent, steelblue);
     background: repeating-linear-gradient(18deg, yellow, transparent, red, transparent, yellow, transparent, steelblue, transparent, yellow, transparent);*/
-    background-color: white;
+    background: linear-gradient(90deg, transparent, lightyellow, transparent);
     color: darkblue;
     font-weight: 900;
     height: 700px;
