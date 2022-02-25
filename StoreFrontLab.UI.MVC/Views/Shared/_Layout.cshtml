@@ -64,7 +64,21 @@
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("Contact","Home")">Contact</a>
                         </li>
+                        @if (Request.IsAuthenticated)
+                        { 
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
+                                    <div class="dropdown-menu fade-down m-0">
+                                        <a href="@Url.Action("Index","Suppliers")" class="dropdown-item dropdown-link">Manage Suppliers</a>
 
+                                        @* how to add below in controller/view since it's part of a view just pointing to id (#review)? *@
+                                        <a class="dropdown-item dropdown-link" href="@Url.Action("Index", "Shippers")">Manage Shippers</a>
+                                        <a href="@Url.Action("Index","Categories")" class="dropdown-item dropdown-link">Manage Categories</a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <div class="navbar navbar-icon align-self-center d-flex">

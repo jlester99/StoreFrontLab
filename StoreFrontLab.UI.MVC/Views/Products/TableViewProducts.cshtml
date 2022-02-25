@@ -27,101 +27,114 @@
         - primarily used for searches/filters
 
         *@
-        <span>
-            @Html.ActionLink("Create New", "Create")
-        </span>
+        <div class="row col-md-12 py-2">
+        @*<div class="px-2 col-md-2">
+            @Html.ActionLink("Create New Product", "Create", null, new { @class = "btn btn-success" })
+        </div>
+        <div class="offset-sm-8 col-md-2">
+            <a href="@Url.Action("Index","Products")" class="btn btn-success mt-3">Card View</a>
+        </div>
+        </div>*@
+
+
 
         <div class="form-group">
-            <div class="row py-4">
-                <div class="col-sm-2 offset-sm-1 col-md-2 offset-md-1">
+            <div class="row py-2">
+                <div class="px-2 col-md-2">
+                    @Html.ActionLink("Create New Product", "Create", null, new { @class = "btn btn-success" })
+                </div>
+
+                <div class="col-sm-2 col-md-2">
                     @Html.DropDownList("CategoryID", null, "Select a Category", htmlAttributes: new { @class = "form-control" })
                 </div>
                 <div class="col-sm-2 col-md-2">
                     @Html.DropDownList("StockStatusID", null, "Select a Status", htmlAttributes: new { @class = "form-control" })
                 </div>
-                <div class="col-sm-2 col-md-2" style="line-height:2;">
+                <div class="col-sm-2 col-md-2" style="line-height:1.75;">
                     <input class="border-0" type="text" name="searchFilter" placeholder="Search Products" />
                 </div>
                 <div class="col-sm-1 col-md-1 ml-2">
                     <input type="submit" value="Search" class="btn btn-primary" />
                 </div>
-
-                <div class="offset-sm-2 col-md-2">
-                    <a href="@Url.Action("Index","Products")" class="btn btn-success mt-3">Card View</a>
+                <div class="col-md-2">
+                    <a href="@Url.Action("Index","Products")" class="btn btn-success">Card View</a>
                 </div>
-                @*</div>*@
+
 
             </div>
         </div>
     </form>
 </div>
 
-<table class="table data-table table-striped">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th style="width:400px;">
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnitPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StockStatus.Description)
-            </th>
-        </tr>
-        </thead>
-    <tbody>
+<div class="container pt-4">
+    <div id="indexWrapper">
+        <table class="table data-table table-striped py-6 pr-5">
+            <thead>
+                <tr>
+                    <th style="width:200px">
+                        @Html.DisplayNameFor(model => model.ProductImage)
+                    </th>
+                    <th style="width:200px">
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </th>
+                    <th style="width:300px">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UnitPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StockStatus.Description)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
 
-        @foreach (var item in Model)
-        {
-            @Html.HiddenFor(modelItem => item.ProductID)
-            <tr>
+                @foreach (var item in Model)
+                {
+                    @Html.HiddenFor(modelItem => item.ProductID)
+                    <tr>
 
-                <td>
-                    <a href="@Url.Action("TableViewDetails", "Products", new { id = item.ProductID })"><img src="~/Content/assets/img/t_@item.ProductImage" alt="Thumbnail version of individual product image retrieve from the database of products" title="@item.ProductName" /></a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UnitPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Description)
-                </td>
-                <td>
+                        <td>
+                            <a href="@Url.Action("TableViewDetails", "Products", new { id = item.ProductID })"><img src="~/Content/assets/img/t_@item.ProductImage" alt="Thumbnail version of individual product image retrieve from the database of products" title="@item.ProductName" /></a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.Description)
+                        </td>
+                        <td>
 
-                    @Html.DisplayFor(modelItem => item.StockStatus.Description)
-                </td>
-                <td vertical-align-middle>
-                    <a href="@Url.Action("Edit", "Products", new { id = item.ProductID })">
-                        <i class="fa fa-pen-square editIcon" aria-hidden="true"></i>
-                    </a> <br />
-                    <a href="@Url.Action("TableViewDetails", "Products", new { id = item.ProductID })">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i>
-                    </a><br />
-                    <a href="@Url.Action("Delete", "Products", new { id = item.ProductID })">
-                        <i class="fa fa-trash deleteIcon" aria-hidden="true"></i>
-                    </a>
-                </td>
-            </tr>
-        } @*end foreach*@
-    </tbody>
+                            @Html.DisplayFor(modelItem => item.StockStatus.Description)
+                        </td>
+                        <td vertical-align-middle>
+                            <a href="@Url.Action("Edit", "Products", new { id = item.ProductID })">
+                                <i class="fa fa-pen-square editIcon" aria-hidden="true"></i>
+                            </a> <br />
+                            <a href="@Url.Action("TableViewDetails", "Products", new { id = item.ProductID })">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                            </a><br />
+                            <a href="@Url.Action("Delete", "Products", new { id = item.ProductID })">
+                                <i class="fa fa-trash deleteIcon" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                } @*end foreach*@
+            </tbody>
 
-</table>
-
+        </table>
+    </div>
+</div>
 
 @section scripts{
     <script>

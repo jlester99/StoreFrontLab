@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using DATA.EF;
 
 namespace StoreFrontLab.UI.MVC.Controllers
-{
+{   [Authorize]
     public class ShippersController : Controller
     {
         private MyStoreEntities db = new MyStoreEntities();

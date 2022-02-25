@@ -9,11 +9,11 @@ using System.Web.Mvc;
 using DATA.EF;
 
 namespace StoreFrontLab.UI.MVC.Controllers
-{
+{   [Authorize]
     public class SuppliersController : Controller
     {
         private MyStoreEntities db = new MyStoreEntities();
-
+        [Authorize]
         // GET: Suppliers
         public ActionResult Index()
         {

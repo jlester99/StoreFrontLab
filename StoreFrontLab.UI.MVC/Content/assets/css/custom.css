@@ -7,7 +7,8 @@ body {
     background-color: white;
     /*background: repeating-linear-gradient(120deg, steelblue, transparent, lightyellow, steelblue, transparent,  lightyellow, steelblue, transparent,  lightyellow);    
     background: repeating-linear-gradient(120deg, steelblue, transparent, lightyellow, steelblue, transparent);*/
-    background: repeating-linear-gradient(45deg, lightsteelblue, transparent);
+    /*background: repeating-linear-gradient(45deg, lightsteelblue, transparent);*/
+    background: repeating-linear-gradient(180deg, lightsteelblue, lightsteelblue, steelblue, lightsteelblue);
 }
 
 .navbar {
@@ -67,6 +68,7 @@ body {
     background: repeating-linear-gradient(18deg, yellow, transparent, red, transparent, yellow, transparent, steelblue, transparent, yellow, transparent);*/
     /*background: linear-gradient(90deg, transparent, lightyellow, transparent);*/
     background: linear-gradient(90deg, transparent, #e5f3f7, transparent);
+    background: linear-gradient(180deg, steelblue,transparent, #e5f3f7, transparent);
     color: darkblue;
     font-weight: 900;
     height: 700px;
@@ -114,6 +116,7 @@ body {
     border: none;
     background-color: transparent;
     padding: 1rem;
+    z-index: 4000;
 }
 
 #templatemo_main_nav .dropdown .btn {
@@ -139,5 +142,39 @@ body {
 
 div#template-mo-zay-hero-carousel {
     position: relative;
-    z-index: 3000;
+    z-index: 1000;
 }
+
+#loginForm {
+    padding: 20px;
+}
+
+/*#indexWrapper {
+    max-width: 90vw;
+}*/
+
+    #indexWrapper > table {
+        box-shadow: darkgray 0px 10px 40px;
+    }
+
+    #indexWrapper img {
+        max-height: 100px;
+        width: auto;
+    }
+
+.formContainer {
+    border: 3px solid #535ba0;
+    box-shadow: 20px 20px darkgray;
+    padding: 3em 1em;
+    max-width: 75%;
+    margin: auto;
+}
+
+    .formContainer label {
+        padding-top: .5em;
+    }
+
+    .formContainer input[type=checkbox] {
+        margin-top: .75em;
+    }
+
