@@ -6,16 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @*<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    @*<link rel="manifest" href="/site.webmanifest">*@
-
-    @*<link rel="apple-touch-icon" href="~/Content/assets/img/apple-icon.png">*@
-
     <link rel="shortcut icon" type="image/x-icon" href="~/Content/assets/img/favicon.ico">
 
-    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
+    @*<link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">*@
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -23,17 +16,19 @@
     @* ADDED jQueryUI CSS CDN - note: themenames are swappable.*@
     @*NOTE, Module 5 AJAX: find names at jqueryui.com/themeroller, gallery tab (like excite-bike, south-street or sunny)*@
 
+    @Styles.Render("~/Content/assets/css")
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/excite-bike/jquery-ui.css">
 
     <link rel="stylesheet" href="~/Content/assets/css/fontawesome.min.css">
-    
+
     @*TemplateMo 559 Zay Shop
+        https://templatemo.com/tm-559-zay-shop*@
 
-    https://templatemo.com/tm-559-zay-shop*@ 
-
-    <link rel="stylesheet" href="~/Content/assets/css/templatemo.css">
-    <link rel="stylesheet" href="~/Content/assets/css/custom.css">
+    @*<link rel="stylesheet" href="~/Content/assets/css/templatemo.css">
+        <link rel="stylesheet" href="~/Content/assets/css/custom.css">*@
+    @RenderSection("htmlHead", required: false)
     
+
 </head>
 
 <body>
@@ -64,22 +59,24 @@
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("Contact","Home")">Contact</a>
                         </li>
-                        @if (Request.IsAuthenticated)
-                        { 
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
-                                    <div class="dropdown-menu fade-down m-0">
-                                        <a href="@Url.Action("Index","Suppliers")" class="dropdown-item dropdown-link">Manage Suppliers</a>
+ 
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 
-                                        @* how to add below in controller/view since it's part of a view just pointing to id (#review)? *@
-                                        <a class="dropdown-item dropdown-link" href="@Url.Action("Index", "Shippers")">Manage Shippers</a>
-                                        <a href="@Url.Action("Index","Categories")" class="dropdown-item dropdown-link">Manage Categories</a>
+                            {
+                                <li class="nav-item">
+                                    <div class="dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
+                                        <div class="dropdown-menu fade-down m-0">
+                                            <a href="@Url.Action("Index","Suppliers")" class="dropdown-item dropdown-link">Manage Suppliers</a>
+
+                                            @* how to add below in controller/view since it's part of a view just pointing to id (#review)? *@
+                                            <a class="dropdown-item dropdown-link" href="@Url.Action("Index", "Shippers")">Manage Shippers</a>
+                                            <a href="@Url.Action("Index","Categories")" class="dropdown-item dropdown-link">Manage Categories</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        }
-                    </ul>
+                                </li>
+                            }
+                        </ul>
                 </div>
                 <div class="navbar navbar-icon align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto px-3">
@@ -226,17 +223,17 @@
     </footer>
     <!-- End Footer -->
     <!-- Start Script -->
-    <script src="~/Content/assets/js/jquery-1.11.0.min.js"></script>
-    <script src="~/Content/assets/js/jquery-migrate-1.2.1.min.js"></script>
-
+    @*<script src="~/Content/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="~/Content/assets/js/jquery-migrate-1.2.1.min.js"></script>*@
+    @Scripts.Render("~/bundles/template")
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>*@
     <!-- ADDED jQuery Ajax CDN-->
     <script src="https://cdn.jsdelivr.net/jquery.ajax.unobtrusive/3.2.4/jquery.unobtrusive-ajax.min.js"></script>
 
-    <script src="~/Content/assets/js/templatemo.js"></script>
-    <script src="~/Content/assets/js/custom.js"></script>
+    @*<script src="~/Content/assets/js/templatemo.js"></script>
+    <script src="~/Content/assets/js/custom.js"></script>*@
     <!-- End Script -->
 
     @RenderSection("scripts", required: false)

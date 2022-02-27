@@ -176,6 +176,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\FiltersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -231,6 +232,8 @@
     <Content Include="Content\assets\img\dog on napperbed__ccexpress 2.png" />
     <Content Include="Content\assets\img\dog with treat jar_ccexpress 2.png" />
     <Content Include="Content\assets\img\Dog_with_pivot_couch.png" />
+    <Content Include="Content\assets\img\emoji.png" />
+    <Content Include="Content\assets\img\error.png" />
     <Content Include="Content\assets\img\favicon-16x16.png" />
     <Content Include="Content\assets\img\favicon-32x32.png" />
     <Content Include="Content\assets\img\favicon.ico" />
@@ -480,9 +483,12 @@
     <Content Include="Views\UserRegistries\Edit.cshtml" />
     <Content Include="Views\UserRegistries\Index.cshtml" />
     <Content Include="Views\Products\TableViewDetails.cshtml" />
+    <Content Include="Views\Errors\NotFound.cshtml" />
+    <Content Include="Views\Errors\Unresolved.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

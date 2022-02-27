@@ -59,7 +59,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
             return View(prodSearchCard.ToPagedList(page, pageSize));
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         //get all products and show on screen with search and paging
         public ActionResult TableViewProducts(string searchFilter, int categoryId = 0, int stockStatusId = 0)
         {

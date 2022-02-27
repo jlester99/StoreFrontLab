@@ -15,6 +15,8 @@
     4) <script> for the datatables function call (in the view - in @section scripts{})
 
 *@
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
 
 <div class="row-border panel-body panel-primary">
     <form method="get" action="~/Products/TableViewProducts" class="form-horizontal">
@@ -28,7 +30,7 @@
 
         *@
         <div class="row col-md-12 py-2">
-        @*<div class="px-2 col-md-2">
+            @*<div class="px-2 col-md-2">
             @Html.ActionLink("Create New Product", "Create", null, new { @class = "btn btn-success" })
         </div>
         <div class="offset-sm-8 col-md-2">
@@ -37,33 +39,33 @@
         </div>*@
 
 
+                <div class="form-group">
+                    <div class="row py-2">
+                        <div class="px-2 col-md-2">
+                            @Html.ActionLink("Create New Product", "Create", null, new { @class = "btn btn-success" })
+                        </div>
 
-        <div class="form-group">
-            <div class="row py-2">
-                <div class="px-2 col-md-2">
-                    @Html.ActionLink("Create New Product", "Create", null, new { @class = "btn btn-success" })
-                </div>
-
-                <div class="col-sm-2 col-md-2">
-                    @Html.DropDownList("CategoryID", null, "Select a Category", htmlAttributes: new { @class = "form-control" })
-                </div>
-                <div class="col-sm-2 col-md-2">
-                    @Html.DropDownList("StockStatusID", null, "Select a Status", htmlAttributes: new { @class = "form-control" })
-                </div>
-                <div class="col-sm-2 col-md-2" style="line-height:1.75;">
-                    <input class="border-0" type="text" name="searchFilter" placeholder="Search Products" />
-                </div>
-                <div class="col-sm-1 col-md-1 ml-2">
-                    <input type="submit" value="Search" class="btn btn-primary" />
-                </div>
-                <div class="col-md-2">
-                    <a href="@Url.Action("Index","Products")" class="btn btn-success">Card View</a>
-                </div>
+                        <div class="col-sm-2 col-md-2">
+                            @Html.DropDownList("CategoryID", null, "Select a Category", htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="col-sm-2 col-md-2">
+                            @Html.DropDownList("StockStatusID", null, "Select a Status", htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="col-sm-2 col-md-2" style="line-height:1.75;">
+                            <input class="border-0" type="text" name="searchFilter" placeholder="Search Products" />
+                        </div>
+                        <div class="col-sm-1 col-md-1 ml-2">
+                            <input type="submit" value="Search" class="btn btn-primary" />
+                        </div>
+                        <div class="col-md-2">
+                            <a href="@Url.Action("Index","Products")" class="btn btn-success">Card View</a>
+                        </div>
 
 
-            </div>
-        </div>
-    </form>
+                    </div>
+                </div>
+                </div>
+</form>
 </div>
 
 <div class="container pt-4">
@@ -135,6 +137,7 @@
         </table>
     </div>
 </div>
+}
 
 @section scripts{
     <script>

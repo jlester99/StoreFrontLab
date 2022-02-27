@@ -9,7 +9,8 @@ using System.Web.Mvc;
 using DATA.EF;
 
 namespace StoreFrontLab.UI.MVC.Controllers
-{   [Authorize]
+{
+    [Authorize(Roles = "Admin")]
     public class SuppliersController : Controller
     {
         private MyStoreEntities db = new MyStoreEntities();

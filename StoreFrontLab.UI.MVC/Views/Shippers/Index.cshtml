@@ -4,11 +4,13 @@
     ViewBag.Title = "Shippers";
 }
 
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
 <h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 <table class="table">
     <tr>
         <th>
@@ -74,6 +76,8 @@
     }
 
 </table>
+}
+
 @section scripts{
     <script>
         $(document).ready(function () {
