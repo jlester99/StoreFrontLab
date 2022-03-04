@@ -1,45 +1,37 @@
 ﻿@model IEnumerable<DATA.EF.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Categories";
 }
 
-<h2>Index</h2>
+<h2 class="offset-md-3 col-md-6 text-center">@ViewBag.Title</h2>
 
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-<table class="table data-table table-striped" id="CategoriesTable">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr id="Category-@item.CategoryID">
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-
-                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |
-                @*@Html.ActionLink("Details", "Details", new { id = item.CategoryID }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID })
-
-                <a href="" class="DetailsLink" id="@item.CategoryID">Details</a>
-
-            </td>
+    <div class="offset-md-3 col-md-2 pb-3">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    </div>
+    <table class="table data-table table-striped offset-md-3 col-md-6" id="CategoriesTable">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
-
-<div id="CategoryDetails"></div>
+        @foreach (var item in Model)
+        {
+            <tr id="Category-@item.CategoryID">
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>
+                    <a href="" class="DetailsLink btn btn-primary" id="@item.CategoryID">Details</a>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }, new { @class = "btn btn-secondary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </table>
+    <div id="CategoryDetails"></div>
 }
 @section scripts{
     <script>

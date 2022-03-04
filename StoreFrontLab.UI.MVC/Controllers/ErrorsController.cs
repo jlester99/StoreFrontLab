@@ -9,6 +9,12 @@ namespace StoreFrontLab.UI.MVC.Controllers
     public class ErrorsController : Controller
     {
         // GET: Errors
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult NotFound()
         {
             return View();

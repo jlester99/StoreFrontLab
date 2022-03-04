@@ -22,7 +22,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // get: products
         public ActionResult Index(string searchFilter, int categoryId = 0, int stockStatusId = 0, int page = 1)
         {
-            int pageSize = 6;
+            int pageSize = 3;
             var products = db.Products
                 .Include(p => p.Category).Include(p => p.Shipper).Include(p => p.StockStatus).Include(p => p.Supplier);
             //initial instance of the products collection.  This will be filtered down based on DDL selection and/or search filter
@@ -183,7 +183,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public ActionResult Create()
         {
@@ -197,6 +197,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductID,ProductName,ProductImage,Description,UnitPrice,TotalUnitsSold,TotalSales,StockStatusID,CategoryID,SupplierID,ShipperID,UnitsInStock,UnitsOnOrder")] Product product, HttpPostedFileBase prodImage)
@@ -228,26 +229,26 @@ namespace StoreFrontLab.UI.MVC.Controllers
 
                         //static example
                         ImageUtility.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+                product.ProductImage = file;
                     }
                 }
                 //no matter what, update the ProductImage with the value of the file variable
-                product.ProductImage = file;
                 #endregion
 
 
                 db.Products.Add(product);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("TableViewProducts");
             }
 
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Description", product.CategoryID);
-            ViewBag.ShipperID = new SelectList(db.Shippers, "ShipperID", "Name", product.ShipperID);
-            ViewBag.StockStatusID = new SelectList(db.StockStatus1, "StockStatusID", "Description", product.StockStatusID);
-            ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "Name", product.SupplierID);
+            //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Description", product.CategoryID);
+            //ViewBag.ShipperID = new SelectList(db.Shippers, "ShipperID", "Name", product.ShipperID);
+            //ViewBag.StockStatusID = new SelectList(db.StockStatus1, "StockStatusID", "Description", product.StockStatusID);
+            //ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "Name", product.SupplierID);
             return View(product);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -270,6 +271,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // POST: Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProductID,ProductName,ProductImage,Description,UnitPrice,TotalUnitsSold,TotalSales,StockStatusID,CategoryID,SupplierID,ShipperID,UnitsInStock,UnitsOnOrder")] Product product, HttpPostedFileBase prodImage)
@@ -279,10 +281,11 @@ namespace StoreFrontLab.UI.MVC.Controllers
 
                 //Image Upload utility step 10
                 #region File Upload
+                string file = "NoImage.png";
                 if (prodImage != null)
                 {
                     //get file name
-                    string file = prodImage.FileName;
+                    file = prodImage.FileName;
 
                     //get the file extension
                     string ext = file.Substring(file.LastIndexOf('.'));
@@ -300,13 +303,8 @@ namespace StoreFrontLab.UI.MVC.Controllers
 
                         ImageUtility.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
 
-                        if (product.ProductImage != null && product.ProductImage != "NoImage.png")
-                        {
-                            string path = Server.MapPath("~/Content/assets/img/");
-                            ImageUtility.Delete(path, product.ProductImage);
-                        }
-
                         product.ProductImage = file; //this updates the product obj before it is saved to the DB with the latest file name
+
                     }
                 }
                 #endregion
@@ -320,7 +318,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
             ViewBag.SupplierID = new SelectList(db.Suppliers, "SupplierID", "Name", product.SupplierID);
             return View(product);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         // GET: Products/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -333,10 +331,12 @@ namespace StoreFrontLab.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(product);
         }
 
         // POST: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -344,11 +344,14 @@ namespace StoreFrontLab.UI.MVC.Controllers
             Product product = db.Products.Find(id);
             //Delete the image for the record that is being deleted
             string path = Server.MapPath("~/Content/assets/img/");
-            ImageUtility.Delete(path, product.ProductImage);
+            if (product.ProductImage != null && product.ProductImage != "NoImage.png")
+            {
+                ImageUtility.Delete(path, product.ProductImage);
+            }
 
             db.Products.Remove(product);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("TableViewProducts");
         }
 
         protected override void Dispose(bool disposing)

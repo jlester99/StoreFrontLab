@@ -52,26 +52,34 @@
                     @if (User.IsInRole("Admin"))
                     {
 
-                        <a href="@Url.Action("TableViewProducts","Products")" class="btn btn-success mt-1">Table View</a>
+                        <a href="@Url.Action("TableViewProducts","Products")" class="btn btn-success">Table View</a>
                     }
                 </div>
                 <div class="col-md-2">
                     @Html.DropDownList("CategoryID", null, "Select a Category", htmlAttributes: new { @class = "form-control" })
                 </div>
-                <div class="col-md-2">
-                    @Html.DropDownList("StockStatusID", null, "Select a Status", htmlAttributes: new { @class = "form-control" })
-                </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="col-md-2">
+                        @Html.DropDownList("StockStatusID", null, "Select a Status", htmlAttributes: new { @class = "form-control" })
+                    </div>
+                }
                 <div class="col-md-1">
-                    <input type="submit" value="Search" class="btn btn-primary mt-2" />
+                    <input type="submit" value="Search" class="btn btn-primary" />
                 </div>
                 <div class="col-md-2" style="line-height:2">
                     <input type="text" name="searchFilter" placeholder="Search Products" />
                     <br />
                 </div>
-                <div class="col-md-2">
-                    <div class="text-center">
+            </div>
+                <div class="row">
+                @*<div class="offset-md-8 col-md-3">*@
+                    <div class="offset-md-8 col-md-3 text-center">
                         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-                        <br /> <br />
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="offset-md-8 col-md-3 text-center">
                         <ul class="pagination pagination-sm active">
                             @for (int i = 1; i <= Model.PageCount; i++)
 
@@ -88,8 +96,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
+             </div>
     </form>
 
     <div class="container py-3">
@@ -138,10 +145,10 @@
                     {
                         <div class="col-md-4 catContainer justify-content-left">
                             <div class="card mb-4 product-wap rounded-0">
-                                <div class="card rounded-0">
-                                    @*<a href="@Url.Action("Details", "Products", new { id = @item.ProductID })">*@
+                                <div class="card-body rounded-0">
                                     <img class="card-img catImage rounded-0 img-fluid text-decoration-none"
-                                         src="~/Content/assets/img/@item.ProductImage" alt="Indivual image of product retrieved from the database" title="@item.ProductName" />
+                                         src="~/Content/assets/img/@item.ProductImage" alt="Individual image of product retrieved from the database" title="@item.ProductName" />
+
                                     <div class="catMiddle">
                                         <a class="catText" href="@Url.Action("Details", "Products", new { id=@item.ProductID})">Details</a>
                                     </div>
@@ -154,7 +161,7 @@
                                     </div>
                                 </div>
 
-                                <div class="card-body" style="min-height: 200px" ;>
+                                <div class="card-footer" style="min-height:200px;">
                                     <a class="text-decoration-none" href="@Url.Action("Details", "Products", new { id = @item.ProductID })">
                                         @item.ProductName
                                         <ul class="w-100 list-unstyled d-flex justify-content-between mb-0 text-decoration-none">
@@ -180,7 +187,7 @@
                                     </a>
 
                                     <p>
-                                        <br />
+                                        @*<br />*@
                                         @using (Html.BeginForm("AddToCart", "Products", new { @productID = item.ProductID }, FormMethod.Post, new { @class = "text-center" }))
                                         {
                                             @*@Html.HiddenFor(p => p.ProductID)*@
@@ -199,23 +206,31 @@
 
             </div>
         </div>
+        </div>
         <div class="row">
-            <div class="col-lg-2 offset-lg-10">
+            <div class="offset-md-8 col-md-3">
                 <div class="text-center">
                     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-                    <br /> <br />
-                    <ul class="pagination pagination-sm">
-                        @for (int i = 1; i <= Model.PageCount; i++)
-                        {
-                            <li class="page-item-disabled">
-                                <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0" tabindex="-1"
-                                   href="@Url.Action("Index", new { page = i, categoryId = ViewBag.SelectedCategory} )">@i</a>
-                            </li>
-                        }
-                    </ul>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="offset-md-8 col-md-3">
+                <ul class="pagination pagination-sm active">
+                    @for (int i = 1; i <= Model.PageCount; i++)
+
+                    {
+                        <li class="page-item-disabled active">
+                            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0" tabindex="-1"
+                               @*href="@Url.Action("Index", new { page = i})">@i</a>*@
+                               href="@Url.Action("Index", new { page = i, categoryId = cat, stockStatusId = stockStat, searchFilter = search})">@i</a>
+                            @*href="@Url.Action("Index", new { page = i, stockStatusId = , categoryId = , searchFiler =   })">@i</a>*@
+
+                        </li>
+
+                    }
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
-<!-- End Content -->
+        <!-- End Content -->

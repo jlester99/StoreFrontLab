@@ -1,42 +1,58 @@
 ﻿@model DATA.EF.Category
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Category ID " + Model.CategoryID;
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Category</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.CategoryID)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+<section class="mt-8 pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 py-3">
+                <h1 class="text-center">@ViewBag.Title</h1>
             </div>
         </div>
     </div>
-}
+</section>
+<section class="pt-0 pb-4">
+    <div class="container">
+        <div class="row offset-md-3 col-md-6 text-center">
+            @using (Html.BeginForm("Edit", "Categories", FormMethod.Post, new
+            {@enctype = "multipart/form-data"}))
+            {
+            @Html.AntiForgeryToken()
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.CategoryID)
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                <div class="form-horizontal">
+                    <hr />
+                    <div class="form-group">
+                        <div>
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row text-center">
+                            <div class="offset-md-2 col-md-8 pt-2 pb-2">
+                                <input type="submit" value="Save" class="btn btn-primary" style="font-size: small;" />
+                                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary d-inline-block", style = "font-size: small;" })
+                            </div>
+                            @*<div class="col-md-2 pt-2 pb-2">
+                                @Html.ActionLink("Delete", "Delete", new { id = Model.CategoryID }, new { @class = "btn btn-danger d-inline-block", style = "font-size: small;" })
+                            </div>*@
+                        </div>
+                    </div>
+            </div>
+                </div>
+            }
+
+
+            @*@section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }*@
+        </div>
+    </div>
+    </section>

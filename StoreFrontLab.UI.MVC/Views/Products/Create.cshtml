@@ -10,7 +10,6 @@
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ProductID)
 
         <div class="formContainer p-3 w-50">
             <h4>@ViewBag.Title</h4>
@@ -83,13 +82,13 @@
 
                 <p>
                     @Html.LabelFor(model => model.TotalUnitsSold, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.TotalUnitsSold, new { htmlAttributes = new { @class = "form-control", placeholder = "Units On Order" } })
+                    @Html.EditorFor(model => model.TotalUnitsSold, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Units Sold" } })
                     @Html.ValidationMessageFor(model => model.TotalUnitsSold, "", new { @class = "text-danger" })
                 </p>
 
                 <p>
                     @Html.LabelFor(model => model.TotalSales, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.TotalSales, new { htmlAttributes = new { @class = "form-control", placeholder = "Units On Order" } })
+                    @Html.EditorFor(model => model.TotalSales, new { htmlAttributes = new { @class = "form-control", placeholder = "Total Sales" } })
                     @Html.ValidationMessageFor(model => model.TotalSales, "", new { @class = "text-danger" })
                 </p>
             </div>

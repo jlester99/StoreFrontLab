@@ -7,6 +7,7 @@ using System.Configuration;
 
 namespace StoreFrontLab.UI.MVC.Controllers
 {
+    [HandleError]
     public class HomeController : Controller
     {
         [HttpGet]

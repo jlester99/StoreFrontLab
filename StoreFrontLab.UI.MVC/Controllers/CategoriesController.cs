@@ -122,7 +122,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
             db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
+    }
 
         protected override void Dispose(bool disposing)
         {

@@ -242,6 +242,7 @@
     <Content Include="Content\assets\img\joey doesn%27t shar_ccexpress.png" />
     <Content Include="Content\assets\img\multi products_ccexpress.png" />
     <Content Include="Content\assets\img\multiprod_ccexpress 2.png" />
+    <Content Include="Content\assets\img\t_NoImage.png" />
     <Content Include="Content\assets\img\NoImage.png" />
     <Content Include="Content\assets\img\Seatbelt collar_ccexpress.png" />
     <Content Include="Content\assets\img\turkey head_ccexpress.png" />
@@ -483,8 +484,8 @@
     <Content Include="Views\UserRegistries\Edit.cshtml" />
     <Content Include="Views\UserRegistries\Index.cshtml" />
     <Content Include="Views\Products\TableViewDetails.cshtml" />
-    <Content Include="Views\Errors\NotFound.cshtml" />
     <Content Include="Views\Errors\Unresolved.cshtml" />
+    <Content Include="Views\Errors\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
